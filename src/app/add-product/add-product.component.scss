@@ -1,0 +1,143 @@
+// mat-toolbar {
+//     background: #002b5c;
+//     color: white;
+// }
+// .listPro{
+//     display: inline-flex;
+//     padding-left: 1000px; 
+    
+// }
+// mat-sidenav {
+//     margin: 16px;
+//     width: 200px;
+//     height: 250px;
+//     // border-right: none;
+//     background: #002b5c;
+//     color: white;
+//     border-radius: 10px;
+//     // padding: 16px;
+//     text-align: center;
+// }
+// :host ::ng-deep .mat-drawer-inner-container{
+//     overflow: hidden !important;
+// }
+// .content {
+//     height:auto;
+//     border-radius: 10px;
+//     margin: 16px;
+//     margin-left: 32px;
+
+//     // display: flex;
+//     // justify-content: center;
+//     // align-items: center;
+//     padding: 5px;
+//     font-size: 2rem;
+//     color: rgb(80, 70, 70);
+// }
+// .align{
+//     text-align: center;
+//     padding: 10px;
+//     margin-top: 5px;
+//     color: #002b5c;
+// }
+// .tp-container {
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     font-size: medium;
+//  }
+//  .tp-container > * {
+//     width: 50%;
+//  }
+//  .addbtn{
+//   padding: 3px ;
+//   width: 20%;
+//   background: #002b5c;
+//   color: white;
+//  }
+//  .cnclbtn{
+//   padding: 3px;  
+//   margin:10px;
+//   width: 20%;
+//   background: #002b5c;
+//   color: white; 
+//  }
+
+// mat-sidenav-container {
+//     height: calc(100vh - 65px);
+// }
+// .menu-button {
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     font-size: 1rem;
+
+//     mat-icon {
+//         margin-right: 8px;
+//     }
+// }
+// .avatar {
+//     margin-top: 16px;
+//     width: 100px;
+//     height: 100px;
+//     border-radius: 50%;
+// }
+
+// .name {
+//     margin-top: 8px;
+//     font-weight: normal;
+// }
+
+// .designation {
+//     margin-top: 2px;
+//     font-size: 0.7rem;
+//     color: lightgrey;
+// }
+
+// mat-divider {
+//     margin-top: 16px;
+//     margin-bottom: 16px;
+//     background-color: rgba(255, 255, 255, 0.5);
+// }
+
+// .mat-button-wrapper a {
+//     text-decoration: none;
+// }
+// a {
+//     text-decoration: none;
+//     color:white;
+// }
+mat-form-field{
+    margin-left: 20px;
+}
+button{
+  margin-left:140px;
+}
+.addbtn{
+    padding: 2.5px ;
+    width: 10%;
+    background: #002b5c;
+    color: white;
+    
+   }
+   .cnclbtn{
+    padding: 2.5px;  
+    margin:10px;
+    width: 10%;
+    background: #002b5c;
+    color: white;
+       
+}
+.align{
+    text-align: center;
+    color: #002b5c;
+    padding: 2px;
+}
+.matPicker{
+    width: 180px;
+}
+.mat-datepicker-content .mat-calendar {
+    width: 200px;
+    height: 100px;
+}

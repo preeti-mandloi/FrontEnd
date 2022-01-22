@@ -1,0 +1,129 @@
+mat-toolbar {
+    background: #002b5c;
+    color: white;
+}
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.adjust{
+    padding-left: 990px;
+    margin-bottom: 10px;   
+}
+// .header{
+
+// }
+// .subModule{
+//     font-size: small;
+// }
+.addPro{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: inline-flex;
+     padding-left: 10px;
+    margin-left:1175px;  
+    mat-icon{
+        color: white;
+    } 
+    button{
+        background-color: #002b5c;
+    }
+    .addOrd{
+        margin-right: 7px;
+    }
+}
+
+.ag-center-cols-viewport{
+ height: 422px;
+ overflow: scroll;
+}
+mat-sidenav {
+    margin: 12px;
+    width: 200px;
+    height: 250px;
+    background: #002b5c;
+    color: white;
+    border-radius: 10px;
+    // padding: 16px;
+    text-align: center;
+}
+:host ::ng-deep .mat-drawer-inner-container{
+    overflow: hidden !important;
+}
+:host ::ng-deep .mat-drawer-content {
+    overflow: hidden;
+}
+.ag-theme-alpine 
+.ag-header-row {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.538em;
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+    z-index: 1;
+    border-bottom: none;
+    
+}
+
+.ag-theme-alpine .ag-cell {
+    font-size: 1.077em;
+    line-height: normal;
+}
+.content {
+    height: calc(100vh - 98px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: lightgray;
+    
+    // overflow: hidden;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+  
+   
+}
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+   
+    mat-icon {
+        margin-right: 8px;
+    }
+}
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+}
+
+mat-divider {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+a {
+    text-decoration: none;
+    color:white;
+}
+ag-grid-angular{
+    height: 80%;
+    width: 100%;
+}
+
+
