@@ -41,11 +41,11 @@ mat-toolbar {
 mat-sidenav {
     margin: 12px;
     width: 200px;
-    height: 250px;
+    height: 180px;
     background: #002b5c;
     color: white;
     border-radius: 10px;
-    // padding: 16px;
+     padding: 16px;
     text-align: center;
 }
 :host ::ng-deep .mat-drawer-inner-container{

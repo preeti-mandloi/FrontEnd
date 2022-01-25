@@ -28,7 +28,7 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav">
       
-  <h4 class="name">Dashboard</h4>
+  <!-- <h4 class="name">Dashboard</h4> -->
   <!-- <p class="designation">Software Engineer</p> -->
   
   <!-- <mat-divider></mat-divider> -->
@@ -37,20 +37,20 @@
         <span>Home</span>
     </button>
     </a>
-    <a routerLink="/app-add-product" ><button mat-button class="menu-button">
+    <!-- <a routerLink="/app-add-product" ><button mat-button class="menu-button">
         <mat-icon>add</mat-icon>
         <span>ADD Product</span>
     </button>
-    </a>
+    </a> -->
     <a routerLink="/app-order-details"><button mat-button class="menu-button">
         <mat-icon>list</mat-icon>
          <span>Order List</span>
     </button>
     </a>
-    <button mat-button class="menu-button">
+    <a routerLink="/app-order-summary"><button mat-button class="menu-button">
       <mat-icon>information</mat-icon>
       <span>Order Info</span>
-  </button>
+  </button></a>
   <button mat-button class="menu-button">
     <mat-icon>payment</mat-icon>
     <span>Payment</span>

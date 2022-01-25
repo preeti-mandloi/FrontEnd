@@ -27,6 +27,7 @@ export class AdminDashboardComponent  {
   public defaultColDef: any;
   public paginationPageSize: any;
   public paginationNumberFormatter: any;
+  agGrid: any;
 
   
   constructor(
@@ -100,6 +101,25 @@ export class AdminDashboardComponent  {
     ]
  
   }
+  // ngAfterViewInit() {
+  //   this.addTotal(this.addProduct)
+  // }
+
+  // addTotal(_addProduct: () => void) {
+  //   let fieldsObj = {
+  //     price: 0
+  //   }
+  //   this.addProduct.forEach(
+  //     (row) => {
+  //       for (let key in fieldsObj) {
+  //         fieldsObj[key] += row[key]
+  //       }
+  //     }
+  //   )
+  //   this.agGrid.api.updateRowData({
+  //     add: [{ make: 'Total', price: fieldsObj['price']}]
+  //   });
+  // }
 
   onGridReady(params: any){
     this.gridApi = params.api;
