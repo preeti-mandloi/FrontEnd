@@ -78,6 +78,7 @@ export class AdminDashboardComponent  {
         field:"price",
         width: 170,
         sortable: true,
+        aggFunc: "sum",
         sortingOrder:['asc', 'desc', 'null'],
         headerCheckboxSelection: false,
       },
