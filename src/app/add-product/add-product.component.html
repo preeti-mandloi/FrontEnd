@@ -142,16 +142,11 @@
                     placeholder="Name of Product" 
                    
                     [(ngModel)]="model.name"
-                    [formControl]="myControl"
-                    [matAutocomplete]="auto"
+                    
                     name="name"
                     >
                     <mat-error>Name is required</mat-error>
-                    <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                       {{option}}
-                      </mat-option>
-                    </mat-autocomplete>
+                
                 </mat-form-field>
                 <mat-form-field fxFlexFill color="#002b5c">
                     <input id="quantity" 

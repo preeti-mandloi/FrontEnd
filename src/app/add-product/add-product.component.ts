@@ -18,9 +18,9 @@ export class AddProductComponent implements OnInit {
 
 
   
-  myControl = new FormControl();
-  options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
-  filteredOptions: Observable<string[]> | undefined;
+  // myControl = new FormControl();
+  // options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
+  // filteredOptions: Observable<string[]> | undefined;
   date = new FormControl(new Date().toLocaleDateString());
 
   
@@ -33,6 +33,9 @@ export class AddProductComponent implements OnInit {
     // private adminDashboard:AdminDashboardComponent,
 
   ) { }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
   model:Product={
     name:'',
     quantity:0,
@@ -41,18 +44,18 @@ export class AddProductComponent implements OnInit {
     mfg:'',
     exp:'',
   }
-  ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
-  }
+  // ngOnInit(): void {
+  //   this.filteredOptions = this.myControl.valueChanges.pipe(
+  //     startWith(''),
+  //     map(value => this._filter(value)),
+  //   );
+  // }
   
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
   onFormSubmit() {
     this.service.addProduct(this.model).subscribe(
       (response: any) => {

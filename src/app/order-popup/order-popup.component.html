@@ -1,16 +1,20 @@
-<mat-card fxLayoutAlign="center center">
+<!-- <mat-card fxLayoutAlign="center center"> -->
     <div class="align"><h2><b>Add Order</b></h2></div>
     <div>
         <form  fxLayout="row wrap" (ngSubmit)="onFormSubmit()">
-            <div fxLayout="row" fxLayout.lt-sm="column" >
+            <div class="fields" fxLayout="row" fxLayout.lt-sm="column" >
                 <mat-form-field fxFlexFill color="#002b5c">
-                    <input id="proName" matInput type="text" placeholder="Name of Product" formControlName="proName">
+                    <input id="proName" matInput type="text" placeholder="Name of Product" formControlName="proName" [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                         {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlexFill color="#002b5c">
                     <input id="quantity" matInput type="number" placeholder="Quantity" formControlName="quantity">
-                </mat-form-field>
-            </div>
-            <div fxLayout="row" fxLayout.lt-sm="column" >
+                </mat-form-field>            
                 <mat-form-field fxFlexFill color="#002b5c" >
                     <input id="price" matInput type="number" placeholder="Price" formControlName="price">
                 </mat-form-field>
@@ -18,11 +22,19 @@
                     <input id="totalPrice" matInput type="number" placeholder="Total Price" formControlName="totalPrice">
                 </mat-form-field>
             </div>
+            <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
+                <mat-label>Payment Mode</mat-label>
+                <mat-select >
+                  <mat-option value="1">Cash</mat-option>
+                  <mat-option value="2">Online</mat-option>
+                  <mat-option value="3">Card</mat-option>
+                </mat-select>
+              </mat-form-field>
             <button mat-raised-button class="addbtn" type="submit">Add</button>
             
-            <button type="reset" mat-raised-button class="cnclbtn" (click)="onClose()">Cancel</button>
+            <!-- <button type="reset" mat-raised-button class="cnclbtn" (click)="onClose()">Cancel</button> -->
 
          </form>
     </div>
 
-</mat-card>
+<!-- </mat-card> -->

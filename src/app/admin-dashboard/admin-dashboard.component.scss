@@ -6,8 +6,10 @@ mat-toolbar {
     width: 50px;
     height: 50px;
     border-radius: 100%;
+   
 }
 .adjust{
+    // float: right;
     padding-left: 990px;
     margin-bottom: 10px;   
 }
@@ -125,5 +127,6 @@ ag-grid-angular{
     height: 80%;
     width: 100%;
 }
+
 
 
