@@ -1,0 +1,65 @@
+mat-toolbar {
+    background: #002b5c;
+    color: white;
+}
+h2{
+    color: #002b5c;
+}
+.loginBtn{
+    background-color:#002b5c;
+    color: white;
+}
+.mat-card{
+    max-width: 500px;
+    // margin: 5em auto;
+    text-align: center;
+    max-height: 600px;
+    float: right;
+    height: 270px;
+    width: 500px;
+    margin-top: 150px;
+    margin-right: 50px;
+    // border-right:2px solid gray;
+    // border-bottom:2px solid gray;
+  
+  }
+//   button{
+//       color: #002b5c;
+//   }
+  .full-width{
+    width: 80%;
+  }
+  .forget-password{
+    padding-left: 0px;
+  }
+  .email-input{
+    padding-top: 10px;
+  }
+  .aLink{
+    float: right;
+    padding-right: 60px;
+    text-decoration: none;
+  }
+  .mat-icon{
+    color: #002b5c;
+    font-size: 20px;
+    
+  }
+//   .box{
+//     padding: 60px;
+//     border:white;
+//     padding-top: 150px ;
+    
+
+//   }
+  
+  #sect1 {  
+    //  background-image: url('../../assets/login.png');  
+
+    // background-size:100%;  
+    // background-position:100%;
+    width: 50%;
+    // object-fit: contain;
+    height: 100%;
+    background-repeat: no-repeat;
+  }   

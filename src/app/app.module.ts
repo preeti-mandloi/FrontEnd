@@ -28,6 +28,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { OrderPopupComponent } from './order-popup/order-popup.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     AdminDashboardComponent,
     OrderDetailsComponent,
     OrderPopupComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

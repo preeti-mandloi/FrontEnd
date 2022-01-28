@@ -1,26 +1,50 @@
 mat-form-field{
-    margin-left: 10px;  
+    margin-left: 15px;  
+    padding-bottom: 10px;
+    
 }
-.fields{
-    display: flex;
-}
+// .fields{
+//     display: flex;
+// }
 button{
   margin-right:auto;
   float: right;
 }
 .addbtn{
+    float: right;
     background: #002b5c;
     color: white;
    }
-//    .cnclbtn{
-//     padding: 2.5px;  
-//     margin:10px;
-//     width: 10%;
-//     background: #002b5c;
-//     color: white;     
-// }
+   .cnclbtn{
+    // padding: 2.5px;  
+    // margin:10px;
+    // width: 10%;
+    background: #002b5c;
+    color: white;  
+}
+mat-divider {
+    margin-left: 8px;
+    margin-right: 8px;
+    
+    // background-color: rgba(255, 255, 255, 0.5);
+}
 .align{
     text-align: center;
     color: #002b5c;
     padding: 2px;
 }
+ag-grid-angular{
+    font-size: small;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: unset;
+    color: gray;
+  
+}
+
+
+
+
