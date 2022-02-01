@@ -7,7 +7,10 @@ import { map, Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
 @Component({
   selector: 'app-order-popup',
   templateUrl: './order-popup.component.html',
@@ -42,7 +45,11 @@ export class OrderPopupComponent implements OnInit {
       {
         headerName: "Name",
         field:"name",
+<<<<<<< HEAD
         width: 120,
+=======
+        width: 70,
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
         headerCheckboxSelection: false,
@@ -50,7 +57,11 @@ export class OrderPopupComponent implements OnInit {
       {
         headerName: "Quantity",
         field:"quantity",
+<<<<<<< HEAD
         width: 100,
+=======
+        width: 80,
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
         headerCheckboxSelection: false,
@@ -59,7 +70,11 @@ export class OrderPopupComponent implements OnInit {
       {
         headerName: "Price",
         field:"price",
+<<<<<<< HEAD
         width: 100,
+=======
+        width: 70,
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
         sortable: true,
         aggFunc: "sum",
         sortingOrder:['asc', 'desc', 'null'],
@@ -68,7 +83,11 @@ export class OrderPopupComponent implements OnInit {
       {
         headerName: "Total Price",
         field:"totalPrice",
+<<<<<<< HEAD
         width: 90,
+=======
+        width: 80,
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
         headerCheckboxSelection: false,
@@ -76,14 +95,22 @@ export class OrderPopupComponent implements OnInit {
       {
         headerName: "Edit",
         field:"edit",
+<<<<<<< HEAD
         width: 80,
         cellRenderer : function(params:any){
                     return '<button (click)="editRow()"><mat-icon>edit</mat-icon></button>'
                 }
+=======
+        width: 70,
+        sortable: true,
+        sortingOrder:['asc', 'desc', 'null'],
+        headerCheckboxSelection: false,
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
       },
       {
         headerName: "Delete",
         field:"Delete",
+<<<<<<< HEAD
         width: 80,
         cellRenderer : function(params:any){
                     return '<button (click)="deleteRow()"><mat-icon>delete</mat-icon></button>'
@@ -97,6 +124,15 @@ export class OrderPopupComponent implements OnInit {
   editRow() {
     alert("BUTTON CLICKEFD")
 }
+=======
+        width: 70,
+        sortable: true,
+        sortingOrder:['asc', 'desc', 'null'],
+        headerCheckboxSelection: false,
+      },
+    ]
+  }
+>>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
   onGridReady(params: any){
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
