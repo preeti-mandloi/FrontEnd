@@ -138,11 +138,7 @@ addOrder(){
   const dailogconfig=new MatDialogConfig();
   dailogconfig.disableClose=false;
   dailogconfig.autoFocus=true;
-<<<<<<< HEAD
   dailogconfig.width="50%";
-=======
-  dailogconfig.width="40%";
->>>>>>> 7ae27c7a9e2e393ec2cf6f56dad1beca3f46abae
    this.dialog.open(OrderPopupComponent,dailogconfig)
 }
 addProduct(){
