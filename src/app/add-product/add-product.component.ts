@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { Product } from '../models/product';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
+import * as moment from 'moment';
 // import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 @Component({
   selector: 'app-add-product',
@@ -57,6 +58,7 @@ export class AddProductComponent implements OnInit {
   //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
   // }
   onFormSubmit() {
+    this.model.mfg = moment(this.model.mfg).format('YYYY-MM-DD');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
         console.log(response)

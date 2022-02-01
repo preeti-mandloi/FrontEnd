@@ -27,6 +27,9 @@ sendPostRequest(url: string, body: any): Observable<any> {
   };
   return this.http.post(url, body, httpOptions);
 }
+public admin(payload :any): Observable<any> {
+  return this.sendPostRequest( environment.usersUrl+'/createAdmin', payload);
+}
   public addProduct(product: Product): Observable<any> {
     return this.sendPostRequest( environment.usersUrl+'/product/addProduct', product);
   }

@@ -1,8 +1,10 @@
+<mat-toolbar class="mat-elevation-z8">Order Management</mat-toolbar>
+<div id="sect1">
 
-<!-- <div class="#sect1"> -->
+    <div class="box">
     
     
-    <mat-toolbar class="mat-elevation-z8">Order Management</mat-toolbar>
+    
 
  
     <mat-card>
@@ -13,45 +15,47 @@
            <form name="loginForm" [formGroup]="loginForm"> 
          
               <div class="email-input">
+                
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input formControlName="username"  matInput required name="username" [(ngModel)]="login.username" maxlength="15"/>
+                    
+                    
+                    <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+                        Required Username Address
+                    </mat-error>
+          
                   
-                   <mat-form-field class="full-width" appearance="outline">
-                       <mat-label>Username</mat-label>
-                       <input formControlName="username"  matInput required name="username"  maxlength="15"/>
-                       
-                       
-                       <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
-                           Required Username Address
-                       </mat-error>
-             
-                     
-                   </mat-form-field>
+                </mat-form-field>
              
                </div>
      
                <div>
                 
-                   <mat-form-field class="full-width" appearance="outline">
-                   <mat-label>Password</mat-label>
-                   <input  formControlName="password" matInput [type]="hide?'password':'text'" required 
-                     name="password"  maxlength="15"  />
-               
-               <button mat-icon-button matSuffix (click)="hide=!hide"
-               [attr.aria-label]="'Hide Password'" [attr.aria.pressed]="hide">
-                   <mat-icon >
-                     {{ hide ? 'visibility_off' : 'visibility'}} </mat-icon>
-                 </button>
-         
-                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-                         Required Password
-                     </mat-error>
-             
-                 
-                   </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input  formControlName="password" matInput [type]="hide?'password':'text'" required 
+                      name="password" [(ngModel)]="login.password" maxlength="15"  />
+                
+                <button mat-icon-button matSuffix (click)="hide=!hide"
+                [attr.aria-label]="'Hide Password'" [attr.aria.pressed]="hide">
+                    <mat-icon >
+                      {{ hide ? 'visibility_off' : 'visibility'}} </mat-icon>
+                  </button>
+          
+                 <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                          Required Password
+                      </mat-error>
+              
+                  
+                    </mat-form-field>
              
                </div>
          
              
-              <a href="/app-admin-dashboard"> <button mat-flat-button class="loginBtn" type="submit" (click)="submit()" [disabled]="loginForm.invalid">Login</button></a>
+              <!-- <a href="/app-admin-dashboard"> -->
+                   <button mat-flat-button class="loginBtn" type="submit" (click)="submit()" [disabled]="loginForm.invalid">Login</button>
+                <!-- </a> -->
          
             
            </form>
@@ -61,8 +65,8 @@
           
    
    
-    <img src="../../assets/login1.jpg" alt="">
-
+    <!-- <img src="../../assets/login1.jpg" alt=""> -->
+    </div>
   
      
        
