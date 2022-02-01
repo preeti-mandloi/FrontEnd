@@ -15,13 +15,31 @@
                 <mat-form-field fxFlexFill color="#002b5c">
                     <input id="quantity" matInput type="number" placeholder="Quantity" formControlName="quantity">
                 </mat-form-field>            
-                <mat-form-field fxFlexFill color="#002b5c" >
+                <!-- <mat-form-field fxFlexFill color="#002b5c" >
                     <input id="price" matInput type="number" placeholder="Price" formControlName="price">
                 </mat-form-field>
                 <mat-form-field fxFlexFill color="#002b5c">
                     <input id="totalPrice" matInput type="number" placeholder="Total Price" formControlName="totalPrice">
-                </mat-form-field>
+                </mat-form-field> -->
+                <button mat-raised-button class="addbtn" type="submit">Add</button>
             </div>
+            <mat-divider></mat-divider>
+            <div class="">
+                <ag-grid-angular  
+                   
+                   [columnDefs]="columnDefs"
+                    (gridReady)="onGridReady($event)" 
+                    [defaultColDef]="defaultColDef" 
+                    [debounceVerticalScrollbar]="true"
+                    [enableRangeSelection]="true"
+                    [domLayout]='"autoHeight"'
+                    [frameworkComponents]="frameworkComponents"
+                  
+                 ></ag-grid-angular>
+                 
+                </div>
+                <mat-divider></mat-divider>
+                <br>
             <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
                 <mat-label>Payment Mode</mat-label>
                 <mat-select >
@@ -29,10 +47,8 @@
                   <mat-option value="2">Online</mat-option>
                   <mat-option value="3">Card</mat-option>
                 </mat-select>
-              </mat-form-field>
-            <button mat-raised-button class="addbtn" type="submit">Add</button>
-            
-            <!-- <button type="reset" mat-raised-button class="cnclbtn" (click)="onClose()">Cancel</button> -->
+            </mat-form-field>
+            <button type="reset" mat-raised-button class="cnclbtn" >Order Confirmed</button>
 
          </form>
     </div>
