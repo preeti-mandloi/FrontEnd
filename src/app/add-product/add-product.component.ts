@@ -38,6 +38,7 @@ export class AddProductComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   model:Product={
+    status:'',
     name:'',
     quantity:0,
     type:'',
@@ -58,7 +59,8 @@ export class AddProductComponent implements OnInit {
   //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
   // }
   onFormSubmit() {
-    this.model.mfg = moment(this.model.mfg).format('YYYY-MM-DD');
+    this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
+    // this.model.exp = moment(this.model.exp).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
         console.log(response)

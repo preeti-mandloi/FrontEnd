@@ -1,5 +1,5 @@
 export interface Product {
-    
+        status:string,
         name:string,
         quantity:number,
         type:string,

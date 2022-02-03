@@ -4,8 +4,10 @@
         <form  fxLayout="row wrap" (ngSubmit)="onFormSubmit()">
             <div class="fields" fxLayout="row" fxLayout.lt-sm="column" >
                 <mat-form-field fxFlexFill color="#002b5c">
-                    <input id="proName" matInput type="text" placeholder="Name of Product" formControlName="proName" [formControl]="myControl"
-                    [matAutocomplete]="auto">
+                    <input id="proName" matInput type="text" placeholder="Name of Product"  [formControl]="myControl"
+                    [(ngModel)]="model.name"
+                    [matAutocomplete]="auto"
+                    name="name">
                     <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                          {{option}}
@@ -13,17 +15,14 @@
                       </mat-autocomplete>
                 </mat-form-field>
                 <mat-form-field fxFlexFill color="#002b5c">
-                    <input id="quantity" matInput type="number" placeholder="Quantity" formControlName="quantity">
+                    <input id="quantity" [(ngModel)]="model.quantity" 
+                     name="quantity" matInput type="number" placeholder="Quantity" >
                 </mat-form-field>            
-                <!-- <mat-form-field fxFlexFill color="#002b5c" >
-                    <input id="price" matInput type="number" placeholder="Price" formControlName="price">
-                </mat-form-field>
-                <mat-form-field fxFlexFill color="#002b5c">
-                    <input id="totalPrice" matInput type="number" placeholder="Total Price" formControlName="totalPrice">
-                </mat-form-field> -->
+              
                 <button mat-raised-button class="addbtn" type="submit">Add</button>
             </div>
             <mat-divider></mat-divider>
+         </form>
           
                 <!-- <ag-grid-angular  
                    
@@ -38,7 +37,7 @@
                  ></ag-grid-angular>
                   -->
                   <table mat-table [dataSource]="dataSource" >
-
+                    
                     <!--- Note that these columns can be defined in any order.
                           The actual rendered columns are set as a property on the row definition" -->
                   
@@ -77,9 +76,8 @@
                         <th mat-header-cell *matHeaderCellDef> Delete </th>
                         <td *matCellDef="let element">
                           <!-- <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"> -->
-                            <mat-icon (click)="removeItem(i)">delete</mat-icon>
+                            <mat-icon (click)="delete(i)">delete</mat-icon>
                           <!-- </button> -->
-                        
                         </td>
                     </ng-container>
 
@@ -107,7 +105,6 @@
             </mat-form-field>
             <button type="reset" mat-raised-button class="cnclbtn" >Order Confirmed</button>
            
-         </form>
     </div>
 
 <!-- </mat-card> -->

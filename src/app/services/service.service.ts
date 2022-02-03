@@ -31,9 +31,9 @@ sendPostRequest(url: string, body: any): Observable<any> {
   return this.sendPostRequest( environment.usersUrl+'/login', data);
 }
 addProduct(product: Product): Observable<any> {
-    return this.sendPostRequest( environment.usersUrl+'/product/addProduct', product);
+    return this.sendPostRequest( environment.usersUrl+'/addProduct', product);
   }
  addOrder(order:Order):Observable<any>{
-return this.sendPostRequest(environment.usersUrl+'/product/addOrder',order);
+return this.sendPostRequest(environment.usersUrl+'/addProductInOrder',order);
   }
 }

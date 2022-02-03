@@ -43,7 +43,7 @@ export class AdminDashboardComponent  {
     this.columnDefs=[
       {
         headerName: "Status",
-        field:"",
+        field:"status",
         width: 170,
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
@@ -126,7 +126,7 @@ export class AdminDashboardComponent  {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
    {
-      this.http.get( environment.usersUrl+'/product/getAllProducts')
+      this.http.get( environment.usersUrl+'/getAllProducts')
       .subscribe(response => {
         params.api.setRowData(response);
       });

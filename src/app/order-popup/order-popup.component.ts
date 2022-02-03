@@ -26,7 +26,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class OrderPopupComponent implements OnInit {
   items: Array<any> = [];
-  newItem: any = {};
+  newItem: any = {
+    name: '',
+    quantity: ''
+  };
 
   displayedColumns: string[] = ['name', 'quantity', 'price', 'totalPrice','edit','delete'];
   dataSource = ELEMENT_DATA;
@@ -45,9 +48,9 @@ export class OrderPopupComponent implements OnInit {
   agGrid: any;
   i:any;
   myControl = new FormControl();
-  options: string[] = [];
+  options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
   filteredOptions: Observable<string[]> | undefined;
-
+ 
   
   constructor(
     public dialogRef: MatDialogRef<OrderPopupComponent>,
@@ -55,89 +58,19 @@ export class OrderPopupComponent implements OnInit {
     private router:Router,
     private http: HttpClient,
 
-  ) { 
-    // this.columnDefs=[
- 
-    //   {
-    //     headerName: "Name",
-    //     field:"name",
-    //     width: 120,
-    //     sortable: true,
-    //     sortingOrder:['asc', 'desc', 'null'],
-    //     headerCheckboxSelection: false,
-    //   },
-    //   {
-    //     headerName: "Quantity",
-    //     field:"quantity",
-    //     width: 100,
-    //     sortable: true,
-    //     sortingOrder:['asc', 'desc', 'null'],
-    //     headerCheckboxSelection: false,
-    //   },
-  
-    //   {
-    //     headerName: "Price",
-    //     field:"price",
-    //     width: 100,
-    //     sortable: true,
-    //     aggFunc: "sum",
-    //     sortingOrder:['asc', 'desc', 'null'],
-    //     headerCheckboxSelection: false,
-    //   },
-    //   {
-    //     headerName: "Total Price",
-    //     field:"totalPrice",
-    //     width: 90,
-    //     sortable: true,
-    //     sortingOrder:['asc', 'desc', 'null'],
-    //     headerCheckboxSelection: false,
-    //   },
-    //   {
-    //     headerName: "Edit",
-    //     field:"edit",
-    //     width: 80,
-    //     cellRenderer : function(params:any){
-    //                 return '<button (click)="editRow()"><mat-icon>edit</mat-icon></button>'
-    //             }
-    //   },
-    //   {
-    //     headerName: "Delete",
-    //     field:"Delete",
-    //     width: 80,
-    //     cellRenderer : function(params:any){
-    //                 return '<button (click)="deleteRow()"><mat-icon>delete</mat-icon></button>'
-    //             }
-    //   },
-    // ]
-  }
-  deleteRow() {
-    alert("BUTTON CLICKEFD")
-}
-  editRow() {
-    alert("BUTTON CLICKEFD")
-} 
-  
+  ) { }
+
   
   addItems() {
     this.items.push(this.newItem);
     console.log(this.items);
     this.newItem = {};
   }
-  removeItem(index:any) {
-    this.items.splice(index, 1); // remove 1 item at ith place
+  delete(index:any) {
+    this.items.splice(index); // remove 1 item at ith place
   }
 
-  onGridReady(params: any){
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-   {
-      this.http.get( environment.usersUrl+'/product/getAllProducts')
-      .subscribe(response => {
-        params.api.setRowData(response);
-      });
-    
-  }
-}
+
   model:Order={
     name:'',
     quantity:0,
@@ -149,7 +82,20 @@ export class OrderPopupComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value)),
     );
-    this.http.get( environment.usersUrl+'/product/addOrder')
+    
+  }
+  
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+  onFormSubmit() {
+    // this.filteredOptions = this.myControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._filter(value)),
+    // );
+    console.log("quantity of order",this.model.quantity)
+    this.service.addOrder(this.model)
     .subscribe(response => {
       // params.api.setRowData(response);
       for(this.i in response){
@@ -157,32 +103,6 @@ export class OrderPopupComponent implements OnInit {
       }
       // console.log("response check===>",response);
     });
-  }
-  
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  onFormSubmit() {
-    this.service.addOrder(this.model).subscribe(
-      (response: any) => {
-        console.log(response)
-        this.router.navigate([''], {
-          state: {
-            data: {
-                'trackingId': response.trackingId
-            }
-          }
-        });
-        alert("success")
-        // this.toastr.success('Your booking id is:  ' + response.trackingId, 'Booking Created');
-      },
-      (error: any) => {
-        alert("error")
-        // this.toastr.error(error.message, 'Booking Failed');
-      }
-    );
   }
   onClose(): void {
     this.dialogRef.close(false);
