@@ -1,110 +1,64 @@
 <!-- <mat-card fxLayoutAlign="center center"> -->
-    <div class="align"><h2><b>Add Order</b></h2></div>
-    <div>
-        <form  fxLayout="row wrap" (ngSubmit)="onFormSubmit()">
-            <div class="fields" fxLayout="row" fxLayout.lt-sm="column" >
-                <mat-form-field fxFlexFill color="#002b5c">
-                    <input id="proName" matInput type="text" placeholder="Name of Product"  [formControl]="myControl"
-                    [(ngModel)]="model.name"
-                    [matAutocomplete]="auto"
-                    name="name">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                         {{option}}
-                        </mat-option>
-                      </mat-autocomplete>
-                </mat-form-field>
-                <mat-form-field fxFlexFill color="#002b5c">
-                    <input id="quantity" [(ngModel)]="model.quantity" 
-                     name="quantity" matInput type="number" placeholder="Quantity" >
-                </mat-form-field>            
-              
-                <button mat-raised-button class="addbtn" type="submit">Add</button>
-            </div>
-            <mat-divider></mat-divider>
-         </form>
-          
-                <!-- <ag-grid-angular  
-                   
-                   [columnDefs]="columnDefs"
-                    (gridReady)="onGridReady($event)" 
-                    [defaultColDef]="defaultColDef" 
-                    [debounceVerticalScrollbar]="true"
-                    [enableRangeSelection]="true"
-                    [domLayout]='"autoHeight"'
-                    [frameworkComponents]="frameworkComponents"
-                  
-                 ></ag-grid-angular>
-                  -->
-                  <table mat-table [dataSource]="dataSource" >
-                    
-                    <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-                  
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="name">
-                      <th mat-header-cell *matHeaderCellDef> name </th>
-                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                    </ng-container>
-                  
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="quantity">
-                      <th mat-header-cell *matHeaderCellDef> Quantity </th>
-                      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-                    </ng-container>
-                  
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="price">
-                      <th mat-header-cell *matHeaderCellDef> Price </th>
-                      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-                    </ng-container>
-                  
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="totalPrice">
-                      <th mat-header-cell *matHeaderCellDef> Total Price </th>
-                      <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="edit">
-                        <th mat-header-cell *matHeaderCellDef> Edit </th>
-                        <td mat-cell *matCellDef="let element">
-                          <!-- <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"> -->
-                            <mat-icon>edit</mat-icon>
-                          <!-- </button> -->
-                        </td>
-                      </ng-container>
-                    <ng-container matColumnDef="delete">
-                        <th mat-header-cell *matHeaderCellDef> Delete </th>
-                        <td *matCellDef="let element">
-                          <!-- <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"> -->
-                            <mat-icon (click)="delete(i)">delete</mat-icon>
-                          <!-- </button> -->
-                        </td>
-                    </ng-container>
+<div class="align">
+  <h2><b>Add Order</b></h2>
+</div>
+<div>
 
-                    
-                  
-                   
-                  
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </table>
-                  
-                  
-                  
-               
-                <mat-divider></mat-divider>
-                <br>
-        
-            <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
-                <mat-label>Payment Mode</mat-label>
-                <mat-select >
-                  <mat-option value="1">Cash</mat-option>
-                  <mat-option value="2">Online</mat-option>
-                  <mat-option value="3">Card</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <button type="reset" mat-raised-button class="cnclbtn" >Order Confirmed</button>
-           
+  <form fxLayout="row wrap" #addOrderForm="ngForm">
+    <div class="fields" fxLayout="row" fxLayout.lt-sm="column">
+      <mat-form-field fxFlexFill color="#002b5c">
+        <input id="proName" matInput type="text" placeholder="Name of Product" [formControl]="myControl" [matAutocomplete]="auto"
+           name="name" [(ngModel)]="newItem.name">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field fxFlexFill color="#002b5c">
+        <input id="quantity" [(ngModel)]="newItem.quantity" name="quantity" matInput type="number" placeholder="Quantity">
+      </mat-form-field>
+      <button mat-raised-button class="addbtn" (click)="addItems()">Add</button>
     </div>
+    <mat-divider></mat-divider>
+  </form>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <td><span  class="form-control">{{item.name}}</span></td> 
+        <td><span >{{item.quantity}}</span></td>
+        <td><span class="form-control" >{{item.price}}</span></td>
+        <td></td>
+        <td><input type="button" value="delete" (click)="removeItem(i)"></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <mat-divider></mat-divider>
+  <br>
+
+  <form>
+    <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
+      <mat-label>Payment Mode</mat-label>
+      <mat-select>
+        <mat-option value="1">Cash</mat-option>
+        <mat-option value="2">Online</mat-option>
+        <mat-option value="3">Card</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <button type="button" mat-raised-button class="cnclbtn" (click)="onFormSubmit()">Order Confirmed</button>
+</div>
 
 <!-- </mat-card> -->

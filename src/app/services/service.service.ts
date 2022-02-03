@@ -33,7 +33,7 @@ sendPostRequest(url: string, body: any): Observable<any> {
 addProduct(product: Product): Observable<any> {
     return this.sendPostRequest( environment.usersUrl+'/addProduct', product);
   }
- addOrder(order:Order):Observable<any>{
-return this.sendPostRequest(environment.usersUrl+'/addProductInOrder',order);
+ addOrder(order:any):Observable<any>{
+    return this.sendPostRequest(environment.usersUrl+'/addProductInOrder',order);
   }
 }

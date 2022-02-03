@@ -26,19 +26,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class OrderPopupComponent implements OnInit {
   items: Array<any> = [];
-  newItem: any = {
-    name: '',
-    quantity: ''
-  };
-
-  displayedColumns: string[] = ['name', 'quantity', 'price', 'totalPrice','edit','delete'];
-  dataSource = ELEMENT_DATA;
-
-
+  newItem: any = { };
   
+  // displayedColumns: string[] = ['name', 'quantity', 'price', 'totalPrice','edit','delete'];
+  dataSource = ELEMENT_DATA;  
   frameworkComponents: any;
-
-
   //ng-grid from here
   public gridApi: any;
   public gridColumnApi:any;
@@ -48,7 +40,7 @@ export class OrderPopupComponent implements OnInit {
   agGrid: any;
   i:any;
   myControl = new FormControl();
-  options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
+  options: string[] = [];
   filteredOptions: Observable<string[]> | undefined;
  
   
@@ -58,16 +50,29 @@ export class OrderPopupComponent implements OnInit {
     private router:Router,
     private http: HttpClient,
 
-  ) { }
+  ) {
+    this.http.get( environment.usersUrl+'/getAllProducts')
+      .subscribe((response : any)=> {
+        for (const property in response) {
+          this.options.push(response[property]["name"]);
+        }
+      });
+   }
 
   
   addItems() {
-    this.items.push(this.newItem);
-    console.log(this.items);
-    this.newItem = {};
+    if(this.options.indexOf(this.newItem.name) !== -1){
+      this.items.push(this.newItem);
+      this.newItem = {};
+    }
+    else{
+      alert("Please choose from available products only");
+    }
+     
   }
-  delete(index:any) {
-    this.items.splice(index); // remove 1 item at ith place
+
+  removeItem(index:any) {
+    this.items.splice(index,1); // remove 1 item at ith place
   }
 
 
@@ -77,33 +82,32 @@ export class OrderPopupComponent implements OnInit {
     price:0,
     totalPrice:0,
   }
+  
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
-    );
-    
+    ); 
   }
   
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+
+  private _filter(value: string): any[] {
+    if(value){
+      const filterValue = value.toLowerCase();
+      return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    }    
+    return [];
   }
+
   onFormSubmit() {
-    // this.filteredOptions = this.myControl.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value)),
-    // );
-    console.log("quantity of order",this.model.quantity)
-    this.service.addOrder(this.model)
-    .subscribe(response => {
-      // params.api.setRowData(response);
-      for(this.i in response){
-        console.log(this.i.name)
-      }
-      // console.log("response check===>",response);
+    console.log("quantity of order",this.items)
+    this.service.addOrder(this.items).subscribe(response => {
+      // for(this.i in response){
+      //   console.log(response[this.i])
+      // }
     });
   }
+
   onClose(): void {
     this.dialogRef.close(false);
   }

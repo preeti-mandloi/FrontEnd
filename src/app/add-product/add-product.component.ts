@@ -35,7 +35,7 @@ export class AddProductComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   model:Product={
     status:'',
@@ -63,14 +63,7 @@ export class AddProductComponent implements OnInit {
     // this.model.exp = moment(this.model.exp).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
-        console.log(response)
-        this.router.navigate([''], {
-          state: {
-            data: {
-                'trackingId': response.trackingId
-            }
-          }
-        });
+        
         alert("success")
         // this.toastr.success('Your booking id is:  ' + response.trackingId, 'Booking Created');
       },
