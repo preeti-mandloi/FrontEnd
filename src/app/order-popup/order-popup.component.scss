@@ -1,6 +1,6 @@
 mat-form-field{
     margin-left: 15px;  
-    padding-bottom: 10px;
+    padding-bottom:20px;
     
 }
 // .fields{
@@ -47,5 +47,24 @@ ag-grid-angular{
  }
 
 
+table {
+  width: 100%;
+  text-align: center;
+}
+th.mat-header-cell {
+    text-align: center;
+}
+.w-75{
+    max-width: 50px;
+}
 
+.w-100{
+    max-width: 100px;
+}
+.confirmOrder{
+ padding-top:20px;
+}
+mat-icon{
+    color:#002b5c ;
+}
 

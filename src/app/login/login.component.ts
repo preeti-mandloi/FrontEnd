@@ -9,10 +9,7 @@ import { ServiceService } from '../services/service.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginDetails={
-    username:"",
-    password:""
-  }
+
   
   constructor(
     private router:Router,
@@ -23,28 +20,48 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   hide: any;
   username:any
-  login =new Login();
+  model:Login ={
+    username:'',
+    password:''
+  }
 
      
   ngOnInit(){
+   
+    this.initForm();
+
+  }
+  initForm(){
     this.loginForm= new FormGroup(
       {
         username :new FormControl('',[Validators.required]),
         password :new FormControl('',[Validators.required])
       }
     );
-    console.log(this.login);
-    
-
+    console.log(this.model);
   }
 
-    submit()
-    { 
-       console.log(this.login);
-      this.service.admin(this.login).subscribe((response:any) => {
-        console.log(response);
-        //  this.router.navigate(['/app-admin-dashboard']);
-        },(error:any) =>{alert("invalid username/password")}
-      );  
-   }
+  //   submit()
+  //   { 
+  //      console.log(this.model);
+  //     this.service.admin(this.model).subscribe((response:any) => {
+  //       console.log(response);
+  //       //  this.router.navigate(['/app-admin-dashboard']);
+  //       },(error:any) =>{alert("invalid username/password")}
+  //     );  
+  //  }
+  submit(){
+    if(this.loginForm.valid){
+      this.service.admin(this.loginForm.value).subscribe(result=>{
+        if(result.success){
+          console.log(result);
+          this.router.navigate(['/app-admin-dashboard']);
+          alert(result.message);
+        }else{
+          alert(result.message);
+        }
+      })
+    }
+  }
 }
+

@@ -7,12 +7,32 @@ import { map, Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
+
+
+export interface PeriodicElement {
+  name: string;
+  quantity : number;
+  price: number;
+  totalPrice: number;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {name: 'Shirt', quantity: 2, price: 1000, totalPrice: 2000},
+  ]
 @Component({
   selector: 'app-order-popup',
   templateUrl: './order-popup.component.html',
   styleUrls: ['./order-popup.component.scss']
 })
 export class OrderPopupComponent implements OnInit {
+  items: Array<any> = [];
+  newItem: any = {};
+
+  displayedColumns: string[] = ['name', 'quantity', 'price', 'totalPrice','edit','delete'];
+  dataSource = ELEMENT_DATA;
+
+
+  
   frameworkComponents: any;
 
 
@@ -36,66 +56,77 @@ export class OrderPopupComponent implements OnInit {
     private http: HttpClient,
 
   ) { 
-    this.columnDefs=[
+    // this.columnDefs=[
  
-      {
-        headerName: "Name",
-        field:"name",
-        width: 120,
-        sortable: true,
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
-      {
-        headerName: "Quantity",
-        field:"quantity",
-        width: 100,
-        sortable: true,
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
+    //   {
+    //     headerName: "Name",
+    //     field:"name",
+    //     width: 120,
+    //     sortable: true,
+    //     sortingOrder:['asc', 'desc', 'null'],
+    //     headerCheckboxSelection: false,
+    //   },
+    //   {
+    //     headerName: "Quantity",
+    //     field:"quantity",
+    //     width: 100,
+    //     sortable: true,
+    //     sortingOrder:['asc', 'desc', 'null'],
+    //     headerCheckboxSelection: false,
+    //   },
   
-      {
-        headerName: "Price",
-        field:"price",
-        width: 100,
-        sortable: true,
-        aggFunc: "sum",
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
-      {
-        headerName: "Total Price",
-        field:"totalPrice",
-        width: 90,
-        sortable: true,
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
-      {
-        headerName: "Edit",
-        field:"edit",
-        width: 80,
-        cellRenderer : function(params:any){
-                    return '<button (click)="editRow()"><mat-icon>edit</mat-icon></button>'
-                }
-      },
-      {
-        headerName: "Delete",
-        field:"Delete",
-        width: 80,
-        cellRenderer : function(params:any){
-                    return '<button (click)="deleteRow()"><mat-icon>delete</mat-icon></button>'
-                }
-      },
-    ]
+    //   {
+    //     headerName: "Price",
+    //     field:"price",
+    //     width: 100,
+    //     sortable: true,
+    //     aggFunc: "sum",
+    //     sortingOrder:['asc', 'desc', 'null'],
+    //     headerCheckboxSelection: false,
+    //   },
+    //   {
+    //     headerName: "Total Price",
+    //     field:"totalPrice",
+    //     width: 90,
+    //     sortable: true,
+    //     sortingOrder:['asc', 'desc', 'null'],
+    //     headerCheckboxSelection: false,
+    //   },
+    //   {
+    //     headerName: "Edit",
+    //     field:"edit",
+    //     width: 80,
+    //     cellRenderer : function(params:any){
+    //                 return '<button (click)="editRow()"><mat-icon>edit</mat-icon></button>'
+    //             }
+    //   },
+    //   {
+    //     headerName: "Delete",
+    //     field:"Delete",
+    //     width: 80,
+    //     cellRenderer : function(params:any){
+    //                 return '<button (click)="deleteRow()"><mat-icon>delete</mat-icon></button>'
+    //             }
+    //   },
+    // ]
   }
   deleteRow() {
     alert("BUTTON CLICKEFD")
 }
   editRow() {
     alert("BUTTON CLICKEFD")
-}
+} 
+  
+  
+  addItems() {
+    this.items.push(this.newItem);
+    console.log(this.items);
+    this.newItem = {};
+  }
+  removeItem(index:any) {
+    this.items.splice(index, 1); // remove 1 item at ith place
+  }
+
   onGridReady(params: any){
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;

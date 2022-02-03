@@ -14,7 +14,7 @@ export interface Order{
         price:number,
         totalPrice:number
 }
-export class Login{
-        username :any ;
-        password :any ;
+export interface Login{
+        username :string ,
+        password :string 
       }
