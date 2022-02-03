@@ -25,7 +25,7 @@
 
 
   <table>
-    <thead>
+    <thead *ngIf="items.length">
       <tr>
         <th>Name</th>
         <th>Quantity</th>
@@ -36,7 +36,6 @@
         <td><span  class="form-control">{{item.name}}</span></td> 
         <td><span >{{item.quantity}}</span></td>
         <td><span class="form-control" >{{item.price}}</span></td>
-        <td></td>
         <td><input type="button" value="delete" (click)="removeItem(i)"></td>
       </tr>
     </tbody>
@@ -58,7 +57,7 @@
     </mat-form-field>
   </form>
 
-  <button type="button" mat-raised-button class="cnclbtn" (click)="onFormSubmit()">Order Confirmed</button>
+  <button type="button" mat-raised-button class="cnclbtn" (ngSubmit)="onFormSubmit()">Order Confirmed</button>
 </div>
 
 <!-- </mat-card> -->

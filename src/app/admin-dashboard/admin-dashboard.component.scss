@@ -128,11 +128,12 @@ ag-grid-angular{
     width: 100%;
 }
 
-mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
+:host ::ng-deep mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
     text-align: -webkit-center;
 }
 
-:host ::ng-deep div#ag-21{
+:host ::ng-deep .ag-paging-panel.ag-unselectable{
     align-self: center;
 }
+
 

@@ -7,6 +7,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 
 export interface PeriodicElement {
@@ -40,15 +41,15 @@ export class OrderPopupComponent implements OnInit {
   agGrid: any;
   i:any;
   myControl = new FormControl();
-  options: string[] = [];
+  options: any[] = [];
   filteredOptions: Observable<string[]> | undefined;
  
   
   constructor(
     public dialogRef: MatDialogRef<OrderPopupComponent>,
     private service:ServiceService,
-    private router:Router,
     private http: HttpClient,
+    private toastr: ToastrService,
 
   ) {
     this.http.get( environment.usersUrl+'/getAllProducts')
@@ -105,6 +106,10 @@ export class OrderPopupComponent implements OnInit {
       // for(this.i in response){
       //   console.log(response[this.i])
       // }
+      this.toastr.success("Added Order", "Success");
+    },
+    error => {
+      this.toastr.error('Failed to add Order');
     });
   }
 

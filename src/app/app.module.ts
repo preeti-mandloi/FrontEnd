@@ -30,6 +30,7 @@ import { OrderPopupComponent } from './order-popup/order-popup.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { LoginComponent } from './login/login.component';
 import {MatTableModule} from '@angular/material/table';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     AgGridModule.withComponents([]),
     MatMenuModule,
+    ToastrModule.forRoot(),
 
   ],
   providers: [],

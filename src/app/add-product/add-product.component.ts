@@ -8,6 +8,7 @@ import { Product } from '../models/product';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 // import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 @Component({
   selector: 'app-add-product',
@@ -31,6 +32,7 @@ export class AddProductComponent implements OnInit {
     public dialogRef: MatDialogRef<AddProductComponent>,
     private service:ServiceService,
     private router:Router,
+    private toastr: ToastrService
     // private adminDashboard:AdminDashboardComponent,
 
   ) { }
@@ -63,13 +65,10 @@ export class AddProductComponent implements OnInit {
     // this.model.exp = moment(this.model.exp).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
-        
-        alert("success")
-        // this.toastr.success('Your booking id is:  ' + response.trackingId, 'Booking Created');
+        this.toastr.success('Product Added', 'Success');
       },
       (error: any) => {
-        alert("error")
-        // this.toastr.error(error.message, 'Booking Failed');
+        this.toastr.error('Product not added', 'Error');
       }
     );
   }
