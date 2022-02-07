@@ -8,6 +8,9 @@ mat-toolbar {
     border-radius: 100%;
    
 }
+.mat-menu-item .mat-icon-no-color, .mat-menu-submenu-icon {
+    color: #002b5c;
+}
 .adjust{
     // float: right;
     padding-left: 990px;
@@ -43,7 +46,7 @@ mat-toolbar {
 mat-sidenav {
     margin: 12px;
     width: 200px;
-    height: 180px;
+    height: 150px;
     background: #002b5c;
     color: white;
     border-radius: 10px;
@@ -129,11 +132,16 @@ ag-grid-angular{
 }
 
 :host ::ng-deep mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
-    text-align: -webkit-center;
+    text-align: inherit;
 }
 
 :host ::ng-deep .ag-paging-panel.ag-unselectable{
     align-self: center;
+}
+.profileIcon{
+    mat-icon{
+        color: #002b5c;
+    }
 }
 
 

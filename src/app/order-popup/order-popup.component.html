@@ -18,17 +18,25 @@
       <mat-form-field fxFlexFill color="#002b5c">
         <input id="quantity" [(ngModel)]="newItem.quantity" name="quantity" matInput type="number" placeholder="Quantity">
       </mat-form-field>
+      <mat-form-field class="invisible example-full-width">
+        <input id="price" [(ngModel)]="newItem.price" name="price" matInput type="number" placeholder="price">
+      </mat-form-field>
       <button mat-raised-button class="addbtn" (click)="addItems()">Add</button>
     </div>
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider> -->
   </form>
 
-
-  <table>
+ 
+  <table class="table">
+    
     <thead *ngIf="items.length">
       <tr>
         <th>Name</th>
         <th>Quantity</th>
+        <th>Price</th>
+        <th>Total Price</th>
+        <!-- <th>Edit</th> -->
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -36,15 +44,17 @@
         <td><span  class="form-control">{{item.name}}</span></td> 
         <td><span >{{item.quantity}}</span></td>
         <td><span class="form-control" >{{item.price}}</span></td>
-        <td><input type="button" value="delete" (click)="removeItem(i)"></td>
+        <td><span class="form-control" >{{item.price*item.quantity}}</span></td>
+        <!-- <td><mat-icon  matTooltip="Edit" >edit</mat-icon></td> -->
+        <td><mat-icon (click)="removeItem(i)" matTooltip="Delete">delete</mat-icon></td>
       </tr>
     </tbody>
   </table>
 
 
 
-  <mat-divider></mat-divider>
-  <br>
+  <!-- <mat-divider></mat-divider> -->
+  
 
   <form>
     <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
@@ -55,9 +65,10 @@
         <mat-option value="3">Card</mat-option>
       </mat-select>
     </mat-form-field>
+    <button type="button" mat-raised-button class="cnclbtn" (ngSubmit)="onFormSubmit()">Order Confirmed</button>
   </form>
 
-  <button type="button" mat-raised-button class="cnclbtn" (ngSubmit)="onFormSubmit()">Order Confirmed</button>
+  
 </div>
 
 <!-- </mat-card> -->

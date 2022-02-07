@@ -65,6 +65,8 @@ export class AddProductComponent implements OnInit {
     // this.model.exp = moment(this.model.exp).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
+        console.log("add product",this.model)
+        
         this.toastr.success('Product Added', 'Success');
       },
       (error: any) => {

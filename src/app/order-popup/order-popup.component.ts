@@ -10,16 +10,16 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 
-export interface PeriodicElement {
-  name: string;
-  quantity : number;
-  price: number;
-  totalPrice: number;
-}
+// export interface PeriodicElement {
+//   name: string;
+//   quantity : number;
+//   price: number;
+//   totalPrice: number;
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'Shirt', quantity: 2, price: 1000, totalPrice: 2000},
-  ]
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {name: 'Shirt', quantity: 2, price: 1000, totalPrice: 2000},
+//   ]
 @Component({
   selector: 'app-order-popup',
   templateUrl: './order-popup.component.html',
@@ -30,7 +30,7 @@ export class OrderPopupComponent implements OnInit {
   newItem: any = { };
   
   // displayedColumns: string[] = ['name', 'quantity', 'price', 'totalPrice','edit','delete'];
-  dataSource = ELEMENT_DATA;  
+  // dataSource = ELEMENT_DATA;  
   frameworkComponents: any;
   //ng-grid from here
   public gridApi: any;
@@ -52,24 +52,34 @@ export class OrderPopupComponent implements OnInit {
     private toastr: ToastrService,
 
   ) {
-    this.http.get( environment.usersUrl+'/getAllProducts')
+    this.http.get( environment.usersUrl+'/product/getAllProducts')
       .subscribe((response : any)=> {
         for (const property in response) {
           this.options.push(response[property]["name"]);
         }
       });
    }
-
-  
+  //  (click)="onEdit(i)"
+  //  onEdit(index){
+  //   this.editMode = true;
+  //   this.editIndex = index;
+  //   this.ngxSmartModalService.open('myModal');
+  //   this.form.setValue({
+  //     rec:this.data[index].recipient,
+  //     msg:this.data[index].message
+  //   });
+  // }
   addItems() {
+    this.service.addOrder(this.newItem).subscribe(response => {
     if(this.options.indexOf(this.newItem.name) !== -1){
-      this.items.push(this.newItem);
+      this.items.push(response);
+      console.log("check price field",this.items)
       this.newItem = {};
     }
     else{
       alert("Please choose from available products only");
     }
-     
+    })
   }
 
   removeItem(index:any) {
@@ -99,18 +109,19 @@ export class OrderPopupComponent implements OnInit {
     }    
     return [];
   }
-
+   
   onFormSubmit() {
-    console.log("quantity of order",this.items)
-    this.service.addOrder(this.items).subscribe(response => {
-      // for(this.i in response){
-      //   console.log(response[this.i])
-      // }
-      this.toastr.success("Added Order", "Success");
-    },
-    error => {
-      this.toastr.error('Failed to add Order');
-    });
+    // console.log("quantity of order",this.items)
+    // this.service.addOrder(this.model).subscribe(response => {
+    //   // for(this.i in response){
+    //   //   console.log(response[this.i])
+    //   // }
+    //   this.toastr.success("Added Order", "Success");
+    //   console.log("add order list",this.items)
+    // },
+    // error => {
+    //   this.toastr.error('Failed to add Order');
+    // });
   }
 
   onClose(): void {

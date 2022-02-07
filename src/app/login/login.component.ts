@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../models/product';
+import { AuthenticationService } from '../services/Auth/authentication.service';
 import { ServiceService } from '../services/service.service';
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router:Router,
     private service:ServiceService,
+    private auth: AuthenticationService
     ) {
       
      }
@@ -52,16 +54,24 @@ export class LoginComponent implements OnInit {
   //  }
   submit(){
     if(this.loginForm.valid){
-      this.service.admin(this.loginForm.value).subscribe(result=>{
-        if(result.success){
+     const result = this.auth.setlogin(this.loginForm.value);
+         if(result){
           console.log(result);
           this.router.navigate(['/app-admin-dashboard']);
-          alert(result.message);
+        //   alert(result);
         }else{
-          alert(result.message);
+          alert('login failed');
         }
-      })
-    }
+      // this.service.admin(this.loginForm.value).subscribe(result=>{
+    //     if(result.success){
+    //       console.log(result);
+    //       this.router.navigate(['/app-admin-dashboard']);
+    //       alert(result.message);
+    //     }else{
+    //       alert(result.message);
+    //     }
+    //   })
+     }
   }
 }
 

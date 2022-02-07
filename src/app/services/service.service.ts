@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Login, Order, Product } from '../models/product'; 
+import { AllProduct, Login, Order, Product } from '../models/product'; 
 import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
@@ -28,12 +28,15 @@ sendPostRequest(url: string, body: any): Observable<any> {
   return this.http.post(url, body, httpOptions);
 }
  admin(data:Login): Observable<any> {
-  return this.sendPostRequest( environment.usersUrl+'/login', data);
+  return this.sendPostRequest( environment.usersUrl, data);
 }
 addProduct(product: Product): Observable<any> {
-    return this.sendPostRequest( environment.usersUrl+'/addProduct', product);
+    return this.sendPostRequest( environment.usersUrl+'/product/addProduct', product);
   }
+getAllProduct(): Observable<any> {
+  return this.sendGETRequest( environment.usersUrl+'/product/getAllProducts');
+}
  addOrder(order:any):Observable<any>{
-    return this.sendPostRequest(environment.usersUrl+'/addProductInOrder',order);
+    return this.sendPostRequest(environment.usersUrl+'/order/addProductInOrder',order);
   }
 }

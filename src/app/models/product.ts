@@ -8,6 +8,16 @@ export interface Product {
         exp:string,
         
 }
+export interface AllProduct {
+        status:string,
+        name:string,
+        quantity:number,
+        type:string,
+        price:number,
+        mfg:string,
+        exp:string,
+        
+}
 export interface Order{
         name:string,
         quantity:number,
@@ -17,4 +27,4 @@ export interface Order{
 export interface Login{
         username :string ,
         password :string 
-      }
+}

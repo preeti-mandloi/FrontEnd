@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { OrderPopupComponent } from '../order-popup/order-popup.component';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { ServiceService } from '../services/service.service';
+import { AllProduct } from '../models/product';
 // import { MatSidenav } from '@angular/material/sidenav';
 // import {BreakpointObserver} from '@angular/cdk/layout' ; 
 
@@ -14,11 +16,10 @@ import { AddProductComponent } from '../add-product/add-product.component';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent  {
-
   // @ViewChild(MatSidenav) sidenav!:MatSidenav;
   frameworkComponents: any;
 
-
+ 
   //ng-grid from here
   public gridApi: any;
   public gridColumnApi:any;
@@ -29,11 +30,20 @@ export class AdminDashboardComponent  {
   public paginationNumberFormatter: any;
   agGrid: any;
 
-  
+  model:AllProduct={
+    status:'',
+    name:'',
+    quantity:0,
+    type:'',
+    price:0,
+    mfg:'',
+    exp:'',
+  }
   constructor(
     // private observer:BreakpointObserver,
     private http: HttpClient,
     private dialog:MatDialog,
+    private service:ServiceService,
   ){
     this.paginationPageSize = 10;
     this.paginationNumberFormatter = function (params: { value: { toLocaleString: () => string; }; }) {
@@ -126,11 +136,14 @@ export class AdminDashboardComponent  {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
    {
-      this.http.get( environment.usersUrl+'/getAllProducts')
-      .subscribe(response => {
+    this.service.getAllProduct().subscribe(response => {
+      // this.http.get( environment.usersUrl+'/product/getAllProducts')
+      // .subscribe(response => {
+        console.log(response)
+        
         params.api.setRowData(response);
       });
-    
+     
   }
 }
 

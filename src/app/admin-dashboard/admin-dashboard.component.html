@@ -14,7 +14,7 @@
         <img class="avatar mat-elevation-z8" src="https://i.pinimg.com/736x/d4/cd/5a/d4cd5a64fb72059083de14e947fb8f82.jpg" />
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item >
+            <button mat-menu-item class="profileIcon">
               <mat-icon>account_circle</mat-icon>
               <span>Profile</span>
             </button>
@@ -33,27 +33,27 @@
  
       <button mat-button class="menu-button">
         <mat-icon>home</mat-icon>
-        <span>Home</span>
+        <span>Product List</span>
     </button>
     <!-- <a href='app-add-product'><button mat-button class="menu-button">
         <mat-icon>add</mat-icon>
         <span>ADD Product</span>
     </button>
     </a> -->
-    <a href='app-order-details'><button mat-button class="menu-button">
+    <a routerLink="/app-order-details"><button mat-button class="menu-button">
         <mat-icon>list</mat-icon>
         <span>Order List</span>
     </button>
     </a>
-    <a routerLink="/app-order-details"><button mat-button class="menu-button">
+    <a routerLink="/app-order-summary"><button mat-button class="menu-button">
       <mat-icon>information</mat-icon>
-      <span>Order Info</span>
+      <span>Order Suumary</span>
      </button>
     </a>
-  <button mat-button class="menu-button">
+  <!-- <button mat-button class="menu-button">
     <mat-icon>payment</mat-icon>
     <span>Payment</span>
-  </button>
+  </button> -->
   
   
     
@@ -88,9 +88,8 @@
                 [paginationNumberFormatter]="paginationNumberFormatter"
                 [domLayout]='"autoHeight"'
                 [frameworkComponents]="frameworkComponents"
-              
              ></ag-grid-angular>
-            </div>
+        </div>
            
        
     </mat-sidenav-content>

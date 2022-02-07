@@ -73,6 +73,6 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[OrderPopupComponent]
+  // entryComponents:[OrderPopupComponent]
 })
 export class AppModule { }
