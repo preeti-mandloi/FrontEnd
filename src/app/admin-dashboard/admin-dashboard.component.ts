@@ -1,12 +1,14 @@
 import { Component,  ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { OrderPopupComponent } from '../order-popup/order-popup.component';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { ServiceService } from '../services/service.service';
 import { AllProduct } from '../models/product';
+import { ProfileComponent } from '../profile/profile.component';
+import { LogoutComponent } from '../logout/logout.component';
 // import { MatSidenav } from '@angular/material/sidenav';
 // import {BreakpointObserver} from '@angular/cdk/layout' ; 
 
@@ -44,6 +46,7 @@ export class AdminDashboardComponent  {
     private http: HttpClient,
     private dialog:MatDialog,
     private service:ServiceService,
+    // private dialogRef: MatDialogRef<LogoutComponent>
   ){
     this.paginationPageSize = 10;
     this.paginationNumberFormatter = function (params: { value: { toLocaleString: () => string; }; }) {
@@ -153,6 +156,7 @@ addOrder(){
   dailogconfig.autoFocus=true;
   dailogconfig.width="50%";
    this.dialog.open(OrderPopupComponent,dailogconfig)
+  //  this.dialogRef.refresh(false);
 }
 addProduct(){
   const dailogconfig=new MatDialogConfig();
@@ -181,5 +185,23 @@ addProduct(){
   //   });
   // }
 
+  profile()
+  {
+    const dailogconfig=new MatDialogConfig();
+  dailogconfig.disableClose=false;
+  dailogconfig.autoFocus=true;
+  dailogconfig.width="30%";
+   this.dialog.open(ProfileComponent,dailogconfig)
+
+  }
+  logout()
+  {
+    const dailogconfig=new MatDialogConfig();
+  dailogconfig.disableClose=false;
+  dailogconfig.autoFocus=true;
+  dailogconfig.width="19%";
+   this.dialog.open(LogoutComponent,dailogconfig)
+
+  }
   
 }

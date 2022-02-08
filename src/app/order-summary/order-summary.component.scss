@@ -93,4 +93,11 @@ p{
     font-size: 13px;
     padding-left: 15px;
 }
-
+.profileIcon{
+    mat-icon{
+        color: #002b5c;
+    }
+}
+.mat-menu-item .mat-icon-no-color, .mat-menu-submenu-icon {
+    color: #002b5c;
+}

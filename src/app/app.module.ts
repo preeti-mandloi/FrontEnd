@@ -31,6 +31,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { LoginComponent } from './login/login.component';
 import {MatTableModule} from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileComponent } from './profile/profile.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ToastrModule } from 'ngx-toastr';
     OrderDetailsComponent,
     OrderPopupComponent,
     OrderSummaryComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

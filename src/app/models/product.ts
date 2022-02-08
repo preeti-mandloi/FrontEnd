@@ -24,6 +24,13 @@ export interface Order{
         price:number,
         totalPrice:number
 }
+export interface getAllOrder{
+        name:string,
+        quantity:number,
+        price:number,
+        totalPrice:number,
+        paymentMode:string
+}
 export interface Login{
         username :string ,
         password :string 

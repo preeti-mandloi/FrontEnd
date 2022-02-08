@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../services/service.service';
-import { Order } from '../models/product';
+import { getAllOrder, Order } from '../models/product';
 import { MatDialogRef } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -43,7 +43,14 @@ export class OrderPopupComponent implements OnInit {
   myControl = new FormControl();
   options: any[] = [];
   filteredOptions: Observable<string[]> | undefined;
- 
+  model:getAllOrder={
+   
+    name:'',
+    quantity:0,
+    price:0,
+   totalPrice:0,
+   paymentMode:''
+  }
   
   constructor(
     public dialogRef: MatDialogRef<OrderPopupComponent>,
@@ -56,6 +63,7 @@ export class OrderPopupComponent implements OnInit {
       .subscribe((response : any)=> {
         for (const property in response) {
           this.options.push(response[property]["name"]);
+          // this.options.push(response[property]["quantity"]);
         }
       });
    }
@@ -73,7 +81,6 @@ export class OrderPopupComponent implements OnInit {
     this.service.addOrder(this.newItem).subscribe(response => {
     if(this.options.indexOf(this.newItem.name) !== -1){
       this.items.push(response);
-      console.log("check price field",this.items)
       this.newItem = {};
     }
     else{
@@ -81,18 +88,14 @@ export class OrderPopupComponent implements OnInit {
     }
     })
   }
+  itemsAdd(){
 
+  }
   removeItem(index:any) {
     this.items.splice(index,1); // remove 1 item at ith place
   }
 
 
-  model:Order={
-    name:'',
-    quantity:0,
-    price:0,
-    totalPrice:0,
-  }
   
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -109,19 +112,11 @@ export class OrderPopupComponent implements OnInit {
     }    
     return [];
   }
-   
+ 
   onFormSubmit() {
-    // console.log("quantity of order",this.items)
-    // this.service.addOrder(this.model).subscribe(response => {
-    //   // for(this.i in response){
-    //   //   console.log(response[this.i])
-    //   // }
-    //   this.toastr.success("Added Order", "Success");
-    //   console.log("add order list",this.items)
-    // },
-    // error => {
-    //   this.toastr.error('Failed to add Order');
-    // });
+    this.service.getAllOrder(this.items).subscribe(response => {
+      console.log("get all order",response)
+    })
   }
 
   onClose(): void {

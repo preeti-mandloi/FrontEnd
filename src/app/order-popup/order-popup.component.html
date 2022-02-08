@@ -4,7 +4,7 @@
 </div>
 <div>
 
-  <form fxLayout="row wrap" #addOrderForm="ngForm">
+  <form fxLayout="row wrap" #addOrderForm="ngForm" (ngSubmit)="itemsAdd()">
     <div class="fields" fxLayout="row" fxLayout.lt-sm="column">
       <mat-form-field fxFlexFill color="#002b5c">
         <input id="proName" matInput type="text" placeholder="Name of Product" [formControl]="myControl" [matAutocomplete]="auto"
@@ -21,7 +21,7 @@
       <mat-form-field class="invisible example-full-width">
         <input id="price" [(ngModel)]="newItem.price" name="price" matInput type="number" placeholder="price">
       </mat-form-field>
-      <button mat-raised-button class="addbtn" (click)="addItems()">Add</button>
+      <button type="reset" mat-raised-button class="addbtn" (click)="addItems()">Add</button>
     </div>
     <!-- <mat-divider></mat-divider> -->
   </form>
@@ -35,7 +35,6 @@
         <th>Quantity</th>
         <th>Price</th>
         <th>Total Price</th>
-        <!-- <th>Edit</th> -->
         <th>Delete</th>
       </tr>
     </thead>
@@ -45,7 +44,6 @@
         <td><span >{{item.quantity}}</span></td>
         <td><span class="form-control" >{{item.price}}</span></td>
         <td><span class="form-control" >{{item.price*item.quantity}}</span></td>
-        <!-- <td><mat-icon  matTooltip="Edit" >edit</mat-icon></td> -->
         <td><mat-icon (click)="removeItem(i)" matTooltip="Delete">delete</mat-icon></td>
       </tr>
     </tbody>
@@ -58,8 +56,8 @@
 
   <form>
     <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
-      <mat-label>Payment Mode</mat-label>
-      <mat-select>
+      <mat-label >Payment Mode</mat-label>
+      <mat-select [(ngModel)]="newItem.paymentmode" name="paymentMode">
         <mat-option value="1">Cash</mat-option>
         <mat-option value="2">Online</mat-option>
         <mat-option value="3">Card</mat-option>

@@ -81,3 +81,11 @@ ag-grid-angular{
     height: 100%;
     width: 100%;
 }
+.profileIcon{
+    mat-icon{
+        color: #002b5c;
+    }
+}
+.mat-menu-item .mat-icon-no-color, .mat-menu-submenu-icon {
+    color: #002b5c;
+}

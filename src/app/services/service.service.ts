@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class ServiceService {
+  token: null | undefined;
+  isAuthenticated: boolean | undefined;
+  authStatusListener: any;
 
   constructor(private http: HttpClient) { }
   sendGETRequest(url: string): Observable<any> {
@@ -36,7 +39,15 @@ addProduct(product: Product): Observable<any> {
 getAllProduct(): Observable<any> {
   return this.sendGETRequest( environment.usersUrl+'/product/getAllProducts');
 }
- addOrder(order:any):Observable<any>{
+addOrder(order:any):Observable<any>{
     return this.sendPostRequest(environment.usersUrl+'/order/addProductInOrder',order);
+}
+getAllOrder(order:any):Observable<any>{
+    return this.sendPostRequest(environment.usersUrl+'/order/addOrder',order);
   }
+logout() {  
+  this.token = null;  
+  this.isAuthenticated = false; 
+  this.authStatusListener.next(false);  
+ }  
 }

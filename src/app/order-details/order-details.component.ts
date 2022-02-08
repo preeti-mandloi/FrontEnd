@@ -71,5 +71,7 @@ export class OrderDetailsComponent implements OnInit {
     
   // }
 }
+profile(){}
+logout(){}
 
 }
