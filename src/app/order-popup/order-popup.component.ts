@@ -127,6 +127,7 @@ export class OrderPopupComponent implements OnInit {
   }
  
   onFormSubmit(OrderformModel:NgForm) {
+    console.log(['paymentMode'].values);
     console.log("check get all ",this.items)
     this.obj=this.items;
     this.service.getAllOrder(this.obj).subscribe(response => {
