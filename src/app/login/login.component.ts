@@ -40,37 +40,20 @@ export class LoginComponent implements OnInit {
         password :new FormControl('',[Validators.required])
       }
     );
-    console.log(this.model);
   }
 
-  //   submit()
-  //   { 
-  //      console.log(this.model);
-  //     this.service.admin(this.model).subscribe((response:any) => {
-  //       console.log(response);
-  //       //  this.router.navigate(['/app-admin-dashboard']);
-  //       },(error:any) =>{alert("invalid username/password")}
-  //     );  
-  //  }
+ 
   submit(){
     if(this.loginForm.valid){
      const result = this.auth.setlogin(this.loginForm.value);
          if(result){
           console.log(result);
           this.router.navigate(['/app-admin-dashboard']);
-        //   alert(result);
+       
         }else{
           alert('login failed');
         }
-      // this.service.admin(this.loginForm.value).subscribe(result=>{
-    //     if(result.success){
-    //       console.log(result);
-    //       this.router.navigate(['/app-admin-dashboard']);
-    //       alert(result.message);
-    //     }else{
-    //       alert(result.message);
-    //     }
-    //   })
+
      }
   }
 }

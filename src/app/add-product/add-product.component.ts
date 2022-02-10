@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { ServiceService } from '../services/service.service';
@@ -18,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddProductComponent implements OnInit {
 
 
-
+  addProduct!: FormGroup;
   
   // myControl = new FormControl();
   // options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
@@ -38,6 +38,7 @@ export class AddProductComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
+    this. initForm();
     // throw new Error('Method not implemented.');
   }
   model:Product={
@@ -61,19 +62,34 @@ export class AddProductComponent implements OnInit {
 
   //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
   // }
+  initForm(){
+    this.addProduct= new FormGroup(
+      {
+        name :new FormControl('',[Validators.required]),
+        quantity :new FormControl('',[Validators.required]),
+        type :new FormControl('',[Validators.required]),
+        price :new FormControl('',[Validators.required]),
+        mfgDate :new FormControl('',[Validators.required]),
+       }
+    );
+    // console.log(this.model);
+  }
   onFormSubmit() {
-    this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
+    
+    if(this.addProduct.valid){
+      this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
         // console.log("add product",this.model)
         
-        this.toastr.success('Product Added', 'Success');
-      },
-      (error: any) => {
-        this.toastr.error('Product not added', 'Error');
-      }
-    );
-    this.grid.refresh();
+      //   this.toastr.success('Product Added', 'Success');
+      // },
+      // (error: any) => {
+      //   this.toastr.error('Product not added', 'Error');
+      // }
+      alert("success ");
+      });}else{alert("faild")}
+    
   }
   onClose(): void {
     this.dialogRef.close(false);

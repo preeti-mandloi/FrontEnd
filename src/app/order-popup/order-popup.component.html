@@ -4,11 +4,12 @@
 </div>
 <div>
 
-  <form fxLayout="row wrap" #addOrderForm="ngForm" >
+  <form fxLayout="row wrap" #addOrderForm="ngForm" name="addProductInRow" [formGroup]="addProductInRow">
     <div class="fields" fxLayout="row" fxLayout.lt-sm="column">
       <mat-form-field fxFlexFill color="#002b5c">
-        <input id="proName" matInput type="text" placeholder="Name of Product" [formControl]="myControl" [matAutocomplete]="auto"
-           name="name" [(ngModel)]="newItem.name">
+        <input id="proName" matInput type="text" placeholder="Name of Product" required [formControl]="myControl" [matAutocomplete]="auto"
+           name="name" [(ngModel)]="newItem.name"
+           formControlName="name">
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
             {{option}}
@@ -16,11 +17,11 @@
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field fxFlexFill color="#002b5c">
-        <input id="quantity" [(ngModel)]="newItem.quantity" required name="quantity"  matInput type="number" placeholder="Quantity">
+        <input id="quantity" formControlName="quantity" [(ngModel)]="newItem.quantity" required name="quantity"  matInput type="number" placeholder="Quantity">
       </mat-form-field>
-      <mat-form-field class="invisible example-full-width">
+      <!-- <mat-form-field class="invisible example-full-width">
         <input id="price" [(ngModel)]="newItem.price" name="price" matInput type="number" placeholder="price">
-      </mat-form-field>
+      </mat-form-field> -->
       <button type="reset" mat-raised-button class="addbtn" (click)="addItems()">Add</button>
     </div>
     <!-- <mat-divider></mat-divider> -->

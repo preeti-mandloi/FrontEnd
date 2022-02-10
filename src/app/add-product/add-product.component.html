@@ -133,14 +133,14 @@
   <mat-card fxLayoutAlign="center center">
     <div class="align"><h2><b>Add Product</b></h2></div>
     <div>
-        <form #myForm="ngForm" fxLayout="row wrap" (ngSubmit)="onFormSubmit()">
+        <form #myForm="ngForm" fxLayout="row wrap" name="addProduct" [formGroup]="addProduct" (ngSubmit)="onFormSubmit()">
             <div fxLayout="row" fxLayout.lt-sm="column" >
                 <mat-form-field fxFlexFill color="#002b5c">
                     <input id="proName" 
                     required
                     matInput type="text" 
                     placeholder="Name of Product" 
-                   
+                    formControlName="name"
                     [(ngModel)]="model.name"
                     
                     name="name"
@@ -152,9 +152,11 @@
                     <input id="quantity" 
                     required
                     matInput type="number" 
+                    formControlName="quantity"
                     required placeholder="Quantity" 
                     [(ngModel)]="model.quantity"
                     name="quantity"
+                    
                     >
                     <mat-error>Quantity is required</mat-error>
                 </mat-form-field>
@@ -167,6 +169,7 @@
                 placeholder="Type" 
                 [(ngModel)]="model.type"
                 name="type"
+                formControlName="type"
                 >
                 <mat-error>Type is required</mat-error>
             </mat-form-field>
@@ -176,6 +179,7 @@
                     placeholder="Price" 
                     [(ngModel)]="model.price"
                     required="price is required"
+                    formControlName="price"
                     name="price"
                     >
                     <mat-error>Price is required</mat-error>
@@ -187,9 +191,10 @@
                 <input matInput [matDatepicker]="picker"
                 [(ngModel)]="model.mfg"
                 name="mfg"
+                formControlName="mfgDate"
                 required
                 >
-                <mat-error>Date is required</mat-error>
+                <!-- <mat-error>Date is required</mat-error> -->
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
