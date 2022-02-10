@@ -24,6 +24,7 @@ export class AddProductComponent implements OnInit {
   // options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
   // filteredOptions: Observable<string[]> | undefined;
   date = new FormControl(new Date().toLocaleDateString());
+  grid: any;
 
   
   
@@ -62,10 +63,9 @@ export class AddProductComponent implements OnInit {
   // }
   onFormSubmit() {
     this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
-    // this.model.exp = moment(this.model.exp).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
-        console.log("add product",this.model)
+        // console.log("add product",this.model)
         
         this.toastr.success('Product Added', 'Success');
       },
@@ -73,6 +73,7 @@ export class AddProductComponent implements OnInit {
         this.toastr.error('Product not added', 'Error');
       }
     );
+    this.grid.refresh();
   }
   onClose(): void {
     this.dialogRef.close(false);

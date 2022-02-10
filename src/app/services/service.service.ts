@@ -46,7 +46,7 @@ getAllOrder(order:any):Observable<any>{
     return this.sendPostRequest(environment.usersUrl+'/order/addOrder',order);
   }
 logout() {  
-  this.token = null;  
+  this.token = null;    
   this.isAuthenticated = false; 
   this.authStatusListener.next(false);  
  }  

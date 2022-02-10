@@ -9,6 +9,7 @@ import { ServiceService } from '../services/service.service';
 import { AllProduct } from '../models/product';
 import { ProfileComponent } from '../profile/profile.component';
 import { LogoutComponent } from '../logout/logout.component';
+import * as moment from 'moment';
 // import { MatSidenav } from '@angular/material/sidenav';
 // import {BreakpointObserver} from '@angular/cdk/layout' ; 
 
@@ -138,10 +139,11 @@ export class AdminDashboardComponent  {
   onGridReady(params: any){
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-   {
-    this.service.getAllProduct().subscribe(response => {
-      // this.http.get( environment.usersUrl+'/product/getAllProducts')
-      // .subscribe(response => {
+   { 
+    this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
+    // this.service.getAllProduct().subscribe(response => {
+      this.http.get( environment.usersUrl+'/product/getAllProducts')
+      .subscribe(response => {
         console.log(response)
         
         params.api.setRowData(response);
