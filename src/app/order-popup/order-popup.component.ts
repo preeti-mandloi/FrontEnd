@@ -90,22 +90,13 @@ export class OrderPopupComponent implements OnInit {
   // }
   addItems() {
     if(this.addProductInRow.valid){
-    this.service.addOrder(this.newItem).subscribe(response => {
-    if(this.options.indexOf(this.newItem.name) !== -1){
-      this.items.push(response);
-      console.log("data of order",this.items)
-      // this.toastr.success('Product Added', 'Success');
-      this.newItem = {};
-      alert("success")
-    // }
-    // else{
-    //   (error: any) =>{
-    //     this.toastr.success('Product not Added', 'Error');
-    //   }
-     
-    }
-    })}else{
-      alert("faild")
+      this.service.addOrder(this.newItem).subscribe(response => {
+      if(this.options.indexOf(this.newItem.name) !== -1){
+        this.items.push(response);
+        console.log("data of order",this.items)
+        this.newItem = {};
+      }
+      })
     }
   }
 
