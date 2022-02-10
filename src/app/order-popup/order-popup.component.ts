@@ -88,13 +88,14 @@ export class OrderPopupComponent implements OnInit {
   //     msg:this.data[index].message
   //   });
   // }
-  addItems() {
+  addItems(addOrderForm: any) {
     if(this.addProductInRow.valid){
       this.service.addOrder(this.newItem).subscribe(response => {
       if(this.options.indexOf(this.newItem.name) !== -1){
         this.items.push(response);
         console.log("data of order",this.items)
         this.newItem = {};
+        addOrderForm.resetForm();
       }
       })
     }
@@ -133,12 +134,18 @@ export class OrderPopupComponent implements OnInit {
   }
  
   onFormSubmit(OrderformModel:NgForm) {
-    console.log(['paymentMode'].values);
-    console.log("check get all ",this.items)
+    
+    // console.log(OrderformModel.value.paymentMode);
+    this.items.forEach(element => {
+      element.paymentmode = OrderformModel.value.paymentMode;
+    });
     this.obj=this.items;
     this.service.getAllOrder(this.obj).subscribe(response => {
       console.log("get all order",response)
     })
+    //reset form
+    this.items = [];
+    OrderformModel.resetForm();
   }
 
   onClose(): void {
