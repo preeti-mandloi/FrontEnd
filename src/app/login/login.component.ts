@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
      const result = this.auth.setlogin(this.loginForm.value);
          if(result){
           console.log(result);
-          this.router.navigate(['/app-admin-dashboard']);
+          this.router.navigate(['/app-order-summary']);
        
         }else{
           alert('login failed');
