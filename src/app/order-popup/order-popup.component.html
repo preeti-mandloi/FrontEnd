@@ -6,7 +6,7 @@
 
   <form fxLayout="row wrap" #addOrderForm="ngForm" name="addProductInRow" [formGroup]="addProductInRow">
     <div class="fields" fxLayout="row" fxLayout.lt-sm="column">
-      <mat-form-field fxFlexFill color="#002b5c">
+      <mat-form-field  color="#002b5c" fxFlex="40">
         <input id="proName" matInput type="text" placeholder="Name of Product" required [formControl]="myControl" [matAutocomplete]="auto"
            name="name" [(ngModel)]="newItem.name"
            formControlName="name">
@@ -16,13 +16,13 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <mat-form-field fxFlexFill color="#002b5c">
+      <mat-form-field  color="#002b5c" fxFlex="40">
         <input id="quantity" formControlName="quantity" [(ngModel)]="newItem.quantity" required name="quantity"  matInput type="number" placeholder="Quantity">
       </mat-form-field>
       <!-- <mat-form-field class="invisible example-full-width">
         <input id="price" [(ngModel)]="newItem.price" name="price" matInput type="number" placeholder="price">
       </mat-form-field> -->
-      <button type="button" mat-raised-button class="addbtn" (click)="addItems(addOrderForm)">Add</button>
+      <button type="button"  mat-raised-button class="addbtn" (click)="addItems(addOrderForm)">Add</button>
     </div>
     <!-- <mat-divider></mat-divider> -->
   </form>
@@ -58,8 +58,8 @@
 
   <form #getAllOrderForm="ngForm" (ngSubmit)="onFormSubmit(getAllOrderForm)" >
 
-    <mat-form-field fxLayout="row" fxLayout.lt-sm="column">
-      <mat-label>Payment Mode</mat-label>
+    <mat-form-field>
+      <mat-label fxFlex="40">Payment Mode</mat-label>
       <mat-select id="paymentMode" name="paymentMode" [(ngModel)]="newItem.paymentMode" required>
         <mat-option value="Cash">Cash</mat-option>
         <mat-option value="UPI">UPI</mat-option>

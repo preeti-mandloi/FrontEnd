@@ -1,12 +1,12 @@
 
 
 
-  <mat-card fxLayoutAlign="center center">
+  <mat-card>
     <div class="align"><h2><b>Add Product</b></h2></div>
     <div>
-        <form #myForm="ngForm" fxLayout="row wrap" #addProductInTable="ngForm" name="addProduct" [formGroup]="addProduct" >
+        <form #myForm="ngForm"  #addProductInTable="ngForm" name="addProduct" [formGroup]="addProduct" >
             <div fxLayout="row" fxLayout.lt-sm="column" >
-                <mat-form-field fxFlexFill color="#002b5c">
+                <mat-form-field fxFlexFill fxFlex="50" color="#002b5c">
                     <input id="proName" 
                     required
                     matInput type="text" 
@@ -19,7 +19,7 @@
                     <mat-error>Name is required</mat-error>
                 
                 </mat-form-field>
-                <mat-form-field fxFlexFill color="#002b5c">
+                <mat-form-field fxFlexFill fxFlex="50" color="#002b5c">
                     <input id="quantity" 
                     required
                     matInput type="number" 
@@ -27,13 +27,12 @@
                     required placeholder="Quantity" 
                     [(ngModel)]="model.quantity"
                     name="quantity"
-                    
                     >
                     <mat-error>Quantity is required</mat-error>
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayout.lt-sm="column" >
-              <mat-form-field fxFlexFill color="#002b5c" >
+              <mat-form-field fxFlexFill fxFlex="50" color="#002b5c" >
                 <input id="type" 
                 required
                 matInput type="text" 
@@ -44,7 +43,7 @@
                 >
                 <mat-error>Type is required</mat-error>
             </mat-form-field>
-                <mat-form-field fxFlexFill color="#002b5c" >
+                <mat-form-field fxFlexFill fxFlex="50" color="#002b5c" >
                     <input id="price" 
                     matInput type="number" 
                     placeholder="Price" 
@@ -57,7 +56,7 @@
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayout.it-sm="column">
-              <mat-form-field fxFlexFill color="#002b5c" class="matPicker">
+              <mat-form-field fxFlexFill color="#002b5c" fxFlex="190" class="matPicker">
                 <mat-label>Manufacturing date</mat-label>
                 <input matInput [matDatepicker]="picker"
                 [(ngModel)]="model.mfg"
