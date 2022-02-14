@@ -132,7 +132,7 @@ export class OrderPopupComponent implements OnInit {
     }    
     return [];
   }
- 
+  
   onFormSubmit(OrderformModel:NgForm) {
     
     // console.log(OrderformModel.value.paymentMode);
@@ -147,7 +147,7 @@ export class OrderPopupComponent implements OnInit {
     this.items = [];
     OrderformModel.resetForm();
   }
-
+ 
   onClose(): void {
     this.dialogRef.close(false);
   }

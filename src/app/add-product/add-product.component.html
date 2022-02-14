@@ -133,7 +133,7 @@
   <mat-card fxLayoutAlign="center center">
     <div class="align"><h2><b>Add Product</b></h2></div>
     <div>
-        <form #myForm="ngForm" fxLayout="row wrap" name="addProduct" [formGroup]="addProduct" (ngSubmit)="onFormSubmit()">
+        <form #myForm="ngForm" fxLayout="row wrap" #addProductInTable="ngForm" name="addProduct" [formGroup]="addProduct" >
             <div fxLayout="row" fxLayout.lt-sm="column" >
                 <mat-form-field fxFlexFill color="#002b5c">
                     <input id="proName" 
@@ -210,7 +210,7 @@
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field> --> 
             </div>
-            <button mat-raised-button class="addbtn" type="submit">Add</button>
+            <button mat-raised-button class="addbtn" type="submit" (click)="onFormSubmit(addProductInTable)">Add</button>
             
             <button type="reset" mat-raised-button class="cnclbtn" (click)="onClose()">Cancel</button>
 

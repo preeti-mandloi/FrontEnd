@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
+  private gridApi: any;
 
   addProduct!: FormGroup;
   
@@ -74,12 +74,14 @@ export class AddProductComponent implements OnInit {
     );
     // console.log(this.model);
   }
-  onFormSubmit() {
+  onFormSubmit(addProductInTable:any) {
     
     if(this.addProduct.valid){
       this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
+      
+    
         // console.log("add product",this.model)
         
       //   this.toastr.success('Product Added', 'Success');
@@ -88,6 +90,8 @@ export class AddProductComponent implements OnInit {
       //   this.toastr.error('Product not added', 'Error');
       // }
       alert("success ");
+      addProductInTable.resetForm();
+      this.gridApi.setRowData(this.model); 
       });}else{alert("faild")}
     
   }

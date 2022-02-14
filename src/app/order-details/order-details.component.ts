@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { LogoutComponent } from '../logout/logout.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-order-details',
@@ -19,7 +22,7 @@ export class OrderDetailsComponent implements OnInit {
   public paginationPageSize: any;
   public paginationNumberFormatter: any;
   constructor(
-    private http: HttpClient,
+    private http: HttpClient, private dialog:MatDialog,
   ) { 
     this.columnDefs=[
       {
@@ -71,7 +74,21 @@ export class OrderDetailsComponent implements OnInit {
     
   // }
 }
-profile(){}
-logout(){}
+profile(){
+  const dailogconfig=new MatDialogConfig();
+  dailogconfig.disableClose=false;
+  dailogconfig.autoFocus=true;
+  dailogconfig.width="30%";
+   this.dialog.open(ProfileComponent,dailogconfig)
+
+}
+logout(){
+  const dailogconfig=new MatDialogConfig();
+  dailogconfig.disableClose=false;
+  dailogconfig.autoFocus=true;
+  dailogconfig.width="19%";
+   this.dialog.open(LogoutComponent,dailogconfig)
+
+}
 
 }

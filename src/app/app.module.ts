@@ -33,7 +33,12 @@ import {MatTableModule} from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './profile/profile.component';
 import { LogoutComponent } from './logout/logout.component';
-
+import { HighchartsChartModule } from 'highcharts-angular';
+import { AreaComponent } from './widgets/area/area.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CardComponent } from './widgets/card/card.component';
+import { WelcomeadminComponent } from './widgets/welcomeadmin/welcomeadmin.component';
+import { PiechartComponent } from './widgets/piechart/piechart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,11 +49,16 @@ import { LogoutComponent } from './logout/logout.component';
     OrderSummaryComponent,
     LoginComponent,
     ProfileComponent,
-    LogoutComponent
+    LogoutComponent,
+    AreaComponent,
+    CardComponent,
+    WelcomeadminComponent,
+    PiechartComponent
   ],
   imports: [
     BrowserModule,
     MatTableModule,
+    HighchartsChartModule,
     MatDialogModule,
     MatTooltipModule,
     AppRoutingModule,
@@ -73,7 +83,11 @@ import { LogoutComponent } from './logout/logout.component';
     AgGridModule.withComponents([]),
     MatMenuModule,
     ToastrModule.forRoot(),
+    FlexLayoutModule
 
+  ],
+  exports:[
+    AreaComponent
   ],
   providers: [],
   bootstrap: [AppComponent],
