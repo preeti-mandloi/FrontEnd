@@ -145,7 +145,8 @@ export class AdminDashboardComponent  {
       this.http.get( environment.usersUrl+'/product/getAllProducts')
       .subscribe(response => {
         console.log(response)
-        //  this.gridApi.setRowData(this.gridColumnApi);
+        // this.gridApi.api.setRowData(response)
+        // this.gridApi.setRowData();
         params.api.setRowData(response);
       });
      
