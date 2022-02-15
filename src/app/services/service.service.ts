@@ -39,8 +39,11 @@ addProduct(product: Product): Observable<any> {
 getAllProduct(): Observable<any> {
   return this.sendGETRequest( environment.usersUrl+'/product/getAllProducts');
 }
+orderList(): Observable<any> {
+  return this.sendGETRequest( environment.usersUrl+'/order/getAllOrders');
+}
 addOrder(order:any):Observable<any>{
-    return this.sendPostRequest(environment.usersUrl+'/order/addProductInOrder',order);
+    return this.sendPostRequest(environment.usersUrl+'/order/addProductInOrder/{paymentmode}',order);
 }
 getAllOrder(order:any):Observable<any>{
     return this.sendPostRequest(environment.usersUrl+'/order/addOrder',order);

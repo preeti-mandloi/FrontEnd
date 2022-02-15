@@ -89,3 +89,6 @@ ag-grid-angular{
 .mat-menu-item .mat-icon-no-color, .mat-menu-submenu-icon {
     color: #002b5c;
 }
+:host ::ng-deep .ag-paging-panel.ag-unselectable{
+    align-self: center;
+}

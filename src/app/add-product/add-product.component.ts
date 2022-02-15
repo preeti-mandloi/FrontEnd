@@ -77,7 +77,7 @@ export class AddProductComponent implements OnInit {
   onFormSubmit(addProductInTable:any) {
     
     if(this.addProduct.valid){
-      this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
+      this.model.mfg = moment(this.model.mfg).format('YYYY-MM-DD');
     this.service.addProduct(this.model).subscribe(
       (response: any) => {
       

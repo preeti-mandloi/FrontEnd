@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment.prod';
 import { LogoutComponent } from '../logout/logout.component';
+import { Order } from '../models/product';
 import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
@@ -11,7 +13,13 @@ import { ProfileComponent } from '../profile/profile.component';
 })
 export class OrderDetailsComponent implements OnInit {
   frameworkComponents: any;
-
+  model:Order={
+    ord_id:'',
+    name:'',
+    quantity:0,
+    paymentmode:''
+   
+  }
 
   //ng-grid from here
   public gridApi: any;
@@ -24,39 +32,44 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     private http: HttpClient, private dialog:MatDialog,
   ) { 
+    this.paginationPageSize = 10;
+    this.paginationNumberFormatter = function (params: { value: { toLocaleString: () => string; }; }) {
+      return '[' + params.value.toLocaleString() + ']';
+    };
     this.columnDefs=[
       {
-        headerName: "Name",
-        field:"",
-        width: 320,
-        sortable: true,
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
-      {
-        headerName: "Quantity",
-        field:"",
-        width: 320,
-        sortable: true,
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
-      {
-        headerName: "Price",
-        field:"",
-        width: 320,
-        sortable: true,
-        sortingOrder:['asc', 'desc', 'null'],
-        headerCheckboxSelection: false,
-      },
-      {
-        headerName: "Total Price",
-        field:"",
+        headerName: "Order ID",
+        field:"ord_id",
         width: 315,
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
         headerCheckboxSelection: false,
       },
+      {
+        headerName: "Product Name",
+        field:"name",
+        width: 315,
+        sortable: true,
+        sortingOrder:['asc', 'desc', 'null'],
+        headerCheckboxSelection: false,
+      },
+      {
+        headerName: "Items",
+        field:"quantity",
+        width: 315,
+        sortable: true,
+        sortingOrder:['asc', 'desc', 'null'],
+        headerCheckboxSelection: false,
+      },
+      {
+        headerName: "Payment Mode",
+        field:"paymentmode",
+        width: 315  ,
+        sortable: true,
+        sortingOrder:['asc', 'desc', 'null'],
+        headerCheckboxSelection: false,
+      },
+     
     ]
   }
 
@@ -66,13 +79,13 @@ export class OrderDetailsComponent implements OnInit {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-  //  {
-  //     this.http.get("http://localhost:8080/product/getAllProducts")
-  //     .subscribe(response => {
-  //       params.api.setRowData(response);
-  //     });
+   {
+    this.http.get( environment.usersUrl+'/order/getAllOrders')
+    .subscribe(response => {
+        params.api.setRowData(response);
+      });
     
-  // }
+  }
 }
 profile(){
   const dailogconfig=new MatDialogConfig();

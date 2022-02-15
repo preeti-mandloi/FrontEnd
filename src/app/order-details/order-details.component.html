@@ -66,9 +66,10 @@
                 [defaultColDef]="defaultColDef" 
                 [enableRangeSelection]="true"
                 [pagination]="true"
+                [debounceVerticalScrollbar]="true"
                 [paginationPageSize]="paginationPageSize"
                 [paginationNumberFormatter]="paginationNumberFormatter"
-                domLayout='autoHeight'
+                [domLayout]='"autoHeight"'
                 [frameworkComponents]="frameworkComponents"
              ></ag-grid-angular>
     </mat-sidenav-content>

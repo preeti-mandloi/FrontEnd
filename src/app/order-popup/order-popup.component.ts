@@ -28,7 +28,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./order-popup.component.scss']
 })
 export class OrderPopupComponent implements OnInit {
-  confirmOrder!: FormGroup;
   addProductInRow!: FormGroup;
   items: Array<any> = [];
   newItem: any = { };
@@ -110,7 +109,6 @@ export class OrderPopupComponent implements OnInit {
   
   ngOnInit(): void {
     this.initForm();
-    this. orderComfirmed();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
@@ -126,14 +124,6 @@ export class OrderPopupComponent implements OnInit {
     );
     // console.log(this.model);
   }
-  orderComfirmed(){
-    this.confirmOrder= new FormGroup(
-      {
-        paymentMode :new FormControl('',[Validators.required]),
-       }
-    );
-    // console.log(this.model);
-  }
 
   private _filter(value: string): any[] {
     if(value){
@@ -143,8 +133,8 @@ export class OrderPopupComponent implements OnInit {
     return [];
   }
   
-  onFormSubmit(OrderformModel:NgForm,getAllOrderForm:any) {
-    if(this.confirmOrder.valid){
+  onFormSubmit(OrderformModel:NgForm) {
+    
     // console.log(OrderformModel.value.paymentMode);
     this.items.forEach(element => {
       element.paymentmode = OrderformModel.value.paymentMode;
@@ -156,7 +146,6 @@ export class OrderPopupComponent implements OnInit {
     //reset form
     this.items = [];
     OrderformModel.resetForm();
-  }
   }
  
   onClose(): void {
