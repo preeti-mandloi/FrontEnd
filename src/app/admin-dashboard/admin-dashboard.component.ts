@@ -62,6 +62,15 @@ export class AdminDashboardComponent  {
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
         headerCheckboxSelection: false,
+        cellStyle: function(params:any) {
+          if (params.value=="Available") {
+  //Here you can check the value and based on that you can change the color
+              //mark police cells as red
+              return {color: 'green'};
+          } else {
+            return {color: 'red'};
+          }
+      }
       },
       {
         headerName: "Name",
@@ -148,6 +157,7 @@ export class AdminDashboardComponent  {
         // this.gridApi.api.setRowData(response)
         // this.gridApi.setRowData();
         params.api.setRowData(response);
+        
       });
      
   }

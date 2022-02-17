@@ -54,6 +54,10 @@ totalProduct():Observable<any>{
 totalOrder():Observable<any>{
     return this.sendGETRequest(environment.usersUrl+'/order/getCount');
 }
+typePercentage():Observable<any>{
+  return this.sendGETRequest(environment.usersUrl+'/product/getTypePercent');
+}
+
   
 logout() {  
   this.token = null;    

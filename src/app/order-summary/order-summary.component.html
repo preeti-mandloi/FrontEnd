@@ -50,28 +50,21 @@
   
  
   
-    <!-- <mat-divider></mat-divider> -->
-  
-  
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="content mat-elevation-z8">
         <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats.card">
-          <mat-card fxFlex="20">
-            <app-widget-welcomeadmin></app-widget-welcomeadmin>
-           </mat-card>
-          <mat-card fxFlex="40">
-           <app-widget-card label="Product" total="{{model.totalProduct}}" percentage="60%"></app-widget-card>
+       
+          <mat-card fxFlex="50">
+           <app-widget-card label="Product" total={{totalProduct}} percentage="60%"></app-widget-card>
           </mat-card>
-          <mat-card fxFlex="40">
-            <app-widget-card label="Order" total="{{model.totalProduct}}" percentage="50%"></app-widget-card>
+          <mat-card fxFlex="50">
+            <app-widget-card label="Order" total={{totalOrder}} percentage="50%"></app-widget-card>
           </mat-card>
       </div>
       <br>
-      <!-- <mat-divider></mat-divider> -->
         <div fxLayout="row"  fxLayoutGap="2px">
-          <div fxFlex="100"><app-widget-area></app-widget-area></div>
-          <div fxFlex="40"><app-widget-piechart></app-widget-piechart></div>
+          <div fxFlex="100"><app-widget-piechart></app-widget-piechart></div>
         </div>
         
       </div>

@@ -33,16 +33,25 @@
             </div>
             <div fxLayout="row" fxLayout.lt-sm="column" >
               <mat-form-field fxFlexFill fxFlex="50" color="#002b5c" >
-                <input id="type" 
-                required
-                matInput type="text" 
-                placeholder="Type" 
-                [(ngModel)]="model.type"
-                name="type"
-                formControlName="type"
-                >
-                <mat-error>Type is required</mat-error>
-            </mat-form-field>
+                  <mat-label>Type</mat-label>
+                  <mat-select  id="type" 
+                  required
+                  matInput type="text" 
+                  placeholder="Type" 
+                  [(ngModel)]="model.type"
+                  name="type"
+                  formControlName="type">
+                    <mat-option value="Fruit">Fruit</mat-option>
+                    <mat-option value="Food">Food</mat-option>
+                    <mat-option value="Cloth">Cloth</mat-option>
+                    <mat-option value="Oil">Oil</mat-option>
+                    <mat-option value="Dry-Fruit">Dry-Fruit</mat-option>
+                    <mat-option value="Dairy-Product">Dairy-Product</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                  </mat-select>
+                  <mat-error>Type is required</mat-error>
+                
+                </mat-form-field>
                 <mat-form-field fxFlexFill fxFlex="50" color="#002b5c" >
                     <input id="price" 
                     matInput type="number" 

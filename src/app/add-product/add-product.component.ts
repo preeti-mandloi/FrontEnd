@@ -92,6 +92,7 @@ export class AddProductComponent implements OnInit {
       alert("success ");
       addProductInTable.resetForm();
       this.gridApi.setRowData(this.model); 
+      this.gridApi.refresh();
       });}else{alert("faild")}
     
   }

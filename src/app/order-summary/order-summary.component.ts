@@ -4,7 +4,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ColDef } from 'ag-grid-community';
 import { environment } from 'src/environments/environment.prod';
 import { LogoutComponent } from '../logout/logout.component';
-import { TotalProduct } from '../models/product';
 import { ProfileComponent } from '../profile/profile.component';
 import { ServiceService } from '../services/service.service';
 
@@ -14,28 +13,26 @@ import { ServiceService } from '../services/service.service';
   styleUrls: ['./order-summary.component.scss']
 })
 export class OrderSummaryComponent implements OnInit {
-  model:TotalProduct={
-   totalProduct:0,
-  }
-  totalCount: any;
+
+  totalProduct: any;
+  totalOrder: any;
   constructor(
     private dialog:MatDialog,
+    private http: HttpClient,
     private service:ServiceService,
-    private http: HttpClient,) { }
+    ) { }
 
   ngOnInit(): void {
-    this.http.get( environment.usersUrl+'/product/getCount')
+    this.service.totalProduct()
     .subscribe(response => {
-      this.totalCount=response;
-      console.log("get count to product",response)
-        // params.api.setRowData(response);
+      this.totalProduct=response;
+      console.log("get count to product",response);
       });
-    //   this.http.get( environment.usersUrl+'/order/getCount')
-    // .subscribe(response => {
-    //   this.totalCount=response;
-    //   console.log("get count to order",response)
-    //     // params.api.setRowData(response);
-    //   });
+      this.service.totalOrder()
+    .subscribe(response => {
+      this.totalOrder=response;
+      console.log("get count to order",response);
+      });
   }
   profile()
   {
