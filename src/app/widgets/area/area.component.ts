@@ -18,7 +18,7 @@ export class AreaComponent implements OnInit {
           type: 'area'
       },
       title: {
-          text: 'Oder Management System'
+          text: 'Order Management System'
       },
       subtitle: {
           text: 'Source: Management'

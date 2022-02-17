@@ -20,7 +20,7 @@ export class PiechartComponent implements OnInit {
           type: 'pie'
       },
       title: {
-          text: 'Order sales in January, 2018'
+          text: 'Available Prodcut type in System'
       },
       tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

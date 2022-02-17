@@ -48,6 +48,13 @@ addOrder(order:any):Observable<any>{
 getAllOrder(order:any):Observable<any>{
     return this.sendPostRequest(environment.usersUrl+'/order/addOrder',order);
   }
+totalProduct():Observable<any>{
+    return this.sendGETRequest(environment.usersUrl+'/product/getCount');
+}
+totalOrder():Observable<any>{
+    return this.sendGETRequest(environment.usersUrl+'/order/getCount');
+}
+  
 logout() {  
   this.token = null;    
   this.isAuthenticated = false; 
