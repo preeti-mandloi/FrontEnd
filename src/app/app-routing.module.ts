@@ -8,7 +8,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { AuthenticationService } from './services/Auth/authentication.service';
 
 const routes: Routes = [
-  { path:'', component:LoginComponent},
+  { path:'', component:LoginComponent,pathMatch: 'full'},
   { path: 'app-admin-dashboard', component : AdminDashboardComponent ,canActivate:[AuthenticationService]},
   { path: 'app-add-product', component : AddProductComponent,canActivate:[AuthenticationService] },
   { path: 'app-admin-dashboard', component:AdminDashboardComponent, canActivate:[AuthenticationService]},

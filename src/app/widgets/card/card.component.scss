@@ -1,5 +1,6 @@
 .target{
     font-size: initial;
+    margin-top: 10px;
 }
 // h3{
 //     margin-top: 0;
@@ -7,14 +8,26 @@
 // }
 .total{
     font-size: large;
+    margin-top: 10px;
 }
 .mat-icon,
 .description{
     color: green;
     font-size: initial;
+    margin-top: 10px;
 }
-// .mat-icon{
-//     position: relative;
-//     padding: 0 10px;
-//     top:5px
-// }
+mat-card-content{
+    background-color: #002b5c;
+    height: 35px;
+    text-align: center;
+    padding-top: 10px;
+    display: block;
+    margin-bottom: 32px;
+    h3{
+        color: white;
+    }
+    span{
+        margin-top: 20px;
+    }
+  }
+  
