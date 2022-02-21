@@ -56,17 +56,17 @@
   <!-- <mat-divider></mat-divider> -->
   
 
-  <form #getAllOrderForm="ngForm" (ngSubmit)="onFormSubmit(getAllOrderForm)" >
+  <form #getAllOrderForm="ngForm"   [formGroup]="orderConfirm">
 
     <mat-form-field>
       <mat-label fxFlex="40">Payment Mode</mat-label>
-      <mat-select id="paymentMode" name="paymentMode" [(ngModel)]="newItem.paymentMode" required>
+      <mat-select id="paymentMode" formControlName="paymentMode" name="paymentMode" [(ngModel)]="newItem.paymentMode" required>
         <mat-option value="Cash">Cash</mat-option>
         <mat-option value="UPI">UPI</mat-option>
         <mat-option value="Card">Card</mat-option>
       </mat-select>
     </mat-form-field>
-    <button type="submit" mat-raised-button class="cnclbtn">Order Confirmed</button>
+    <button type="submit" mat-raised-button class="cnclbtn" (click)="onFormSubmit(getAllOrderForm)">Order Confirmed</button>
   </form>
 
   

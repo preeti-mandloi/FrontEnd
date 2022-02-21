@@ -12,16 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 
 
 
-// export interface PeriodicElement {
-//   name: string;
-//   quantity : number;
-//   price: number;
-//   totalPrice: number;
-// }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {name: 'Shirt', quantity: 2, price: 1000, totalPrice: 2000},
-//   ]
 @Component({
   selector: 'app-order-popup',
   templateUrl: './order-popup.component.html',
@@ -29,18 +19,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrderPopupComponent implements OnInit {
   addProductInRow!: FormGroup;
+  orderConfirm!:FormGroup;
   items: Array<any> = [];
   newItem: any = { };
-  // model:item={
-  //   name:'',
-  //     quantity:0,
-  //     price:0,
-  //    totalPrice:0,
-  //    paymentMode:''
-  // }
-  // displayedColumns: string[] = ['name', 'quantity', 'price', 'totalPrice','edit','delete'];
-  // dataSource = ELEMENT_DATA;  
-  frameworkComponents: any;
+ frameworkComponents: any;
   //ng-grid from here
   public gridApi: any;
   public gridColumnApi:any;
@@ -53,16 +35,7 @@ export class OrderPopupComponent implements OnInit {
   public myControl = new FormControl();
   public options: any[] = [];
   public filteredOptions: Observable<string[]> | undefined;
-  // model:GetAllOrder={
-   
-  //   name:'',
-  //   quantity:0,
-  //   price:0,
-  //  totalPrice:0,
-  //  paymentMode:''
-  // }
-  // obj!: GetAllOrder;
-  
+
   constructor(
     public dialogRef: MatDialogRef<OrderPopupComponent>,
     private service:ServiceService,
@@ -74,20 +47,10 @@ export class OrderPopupComponent implements OnInit {
       .subscribe((response : any)=> {
         for (const property in response) {
           this.options.push(response[property]["name"]);
-          // this.options.push(response[property]["quantity"]);
         }
       });
    }
-  //  (click)="onEdit(i)"
-  //  onEdit(index){
-  //   this.editMode = true;
-  //   this.editIndex = index;
-  //   this.ngxSmartModalService.open('myModal');
-  //   this.form.setValue({
-  //     rec:this.data[index].recipient,
-  //     msg:this.data[index].message
-  //   });
-  // }
+
   addItems(addOrderForm: any) {
     if(this.addProductInRow.valid){
       this.service.addOrder(this.newItem).subscribe(response => {
@@ -122,9 +85,16 @@ export class OrderPopupComponent implements OnInit {
        
        }
     );
+    this.orderConfirm= new FormGroup(
+      {
+        paymentMode :new FormControl('',[Validators.required]),
+
+      }
+    );
     // console.log(this.model);
   }
 
+  
   private _filter(value: string): any[] {
     if(value){
       const filterValue = value.toLowerCase();
@@ -134,7 +104,7 @@ export class OrderPopupComponent implements OnInit {
   }
   
   onFormSubmit(OrderformModel:NgForm) {
-    
+    if(this.orderConfirm.valid){
     // console.log(OrderformModel.value.paymentMode);
     this.items.forEach(element => {
       element.paymentmode = OrderformModel.value.paymentMode;
@@ -142,11 +112,12 @@ export class OrderPopupComponent implements OnInit {
     this.obj=this.items;
     this.service.getAllOrder(this.obj).subscribe(response => {
       console.log("get all order",response)
+      this.toastr.success("Order Sold")
     })
     //reset form
     this.items = [];
     OrderformModel.resetForm();
-  }
+  }}
  
   onClose(): void {
     this.dialogRef.close(false);

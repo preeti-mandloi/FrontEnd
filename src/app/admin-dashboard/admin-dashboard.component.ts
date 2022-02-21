@@ -10,6 +10,7 @@ import { AllProduct } from '../models/product';
 import { ProfileComponent } from '../profile/profile.component';
 import { LogoutComponent } from '../logout/logout.component';
 import * as moment from 'moment';
+import { GridOptions } from 'ag-grid-community';
 // import { MatSidenav } from '@angular/material/sidenav';
 // import {BreakpointObserver} from '@angular/cdk/layout' ; 
 
@@ -24,7 +25,7 @@ export class AdminDashboardComponent  {
 
  
   //ng-grid from here
-  public gridApi: any;
+  public gridApi!: GridOptions;
   public gridColumnApi:any;
   public columnDefs: any;
   public sortingOrder: any;
@@ -146,21 +147,32 @@ export class AdminDashboardComponent  {
   // }
 
   onGridReady(params: any){
-    this.gridApi = params.api;
+    this.gridApi = params;
     this.gridColumnApi = params.columnApi;
    { 
     this.model.mfg = moment(this.model.mfg).format('DD-MM-YYYY');
     // this.service.getAllProduct().subscribe(response => {
-      this.http.get( environment.usersUrl+'/product/getAllProducts')
-      .subscribe(response => {
-        console.log(response)
-        // this.gridApi.api.setRowData(response)
-        // this.gridApi.setRowData();
-        params.api.setRowData(response);
+      // this.http.get( environment.usersUrl+'/product/getAllProducts')
+      // .subscribe(response => {
+      //   console.log(response)
+      //   // this.gridApi.api.setRowData(response)
+      //   // this.gridApi.setRowData();
+      //   params.api.setRowData(response);
         
-      });
-     
+      // });
+     this.refresh();
   }
+}
+refresh() {
+  this.service.getAllProduct().subscribe(data => { 
+        console.log(data);
+        // this.gridApi.api.setRowData(data)
+        // this.gridApi.setRowData();
+        const response = data as any;
+        this.gridApi.api?.setRowData(response);
+        // api.setRowData(newData)
+        console.log("check grid data",this.gridApi)
+      });
 }
 
 addOrder(){
@@ -176,7 +188,11 @@ addProduct(){
   dailogconfig.disableClose=false;
   dailogconfig.autoFocus=true;
   dailogconfig.width="40%";
-   this.dialog.open(AddProductComponent,dailogconfig)
+   this.dialog.open(AddProductComponent,dailogconfig).afterClosed().subscribe((result) => {
+     if(result.data === 'success') {
+       this.refresh();
+     }
+   })
 }
 // onClose(){
 //   this.dialog.closeAll();
