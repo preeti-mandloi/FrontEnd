@@ -1,76 +1,76 @@
 <!-- <mat-card fxLayoutAlign="center center"> -->
-<div class="align">
-  <h2><b>Add Order</b></h2>
-</div>
-<div>
-
-  <form fxLayout="row wrap" #addOrderForm="ngForm" name="addProductInRow" [formGroup]="addProductInRow">
-    <div class="fields" fxLayout="row" fxLayout.lt-sm="column">
-      <mat-form-field  color="#002b5c" fxFlex="40">
-        <input id="proName" matInput type="text" placeholder="Name of Product" required [formControl]="myControl" [matAutocomplete]="auto"
-           name="name" [(ngModel)]="newItem.name"
-           formControlName="name">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field  color="#002b5c" fxFlex="40">
-        <input id="quantity" formControlName="quantity" [(ngModel)]="newItem.quantity" required name="quantity"  matInput type="number" placeholder="Quantity">
-      </mat-form-field>
-      <!-- <mat-form-field class="invisible example-full-width">
-        <input id="price" [(ngModel)]="newItem.price" name="price" matInput type="number" placeholder="price">
-      </mat-form-field> -->
-      <button type="button"  mat-raised-button class="addbtn" (click)="addItems(addOrderForm)">Add</button>
-    </div>
+  <div class="align">
+    <h2><b>Add Order</b></h2>
+  </div>
+  <div>
+  
+    <form fxLayout="row wrap" #addOrderForm="ngForm" name="addProductInRow" [formGroup]="addProductInRow">
+      <div class="fields" fxLayout="row" fxLayout.lt-sm="column">
+        <mat-form-field  color="#002b5c" fxFlex="40">
+          <input id="proName" matInput type="text" placeholder="Name of Product" required [formControl]="myControl" [matAutocomplete]="auto"
+             name="name" [(ngModel)]="newItem.name"
+             formControlName="name">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field  color="#002b5c" fxFlex="40">
+          <input id="quantity" formControlName="quantity" [(ngModel)]="newItem.quantity" required name="quantity"  matInput type="number" placeholder="Quantity">
+        </mat-form-field>
+        <!-- <mat-form-field class="invisible example-full-width">
+          <input id="price" [(ngModel)]="newItem.price" name="price" matInput type="number" placeholder="price">
+        </mat-form-field> -->
+        <button type="button"  mat-raised-button class="addbtn" (click)="addItems(addOrderForm)">Add</button>
+      </div>
+      <!-- <mat-divider></mat-divider> -->
+    </form>
+  
+   
+    <table class="table">
+      
+      <thead *ngIf="items.length">
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total Price</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i = index">
+          <td><span  class="form-control">{{item.name}}</span></td> 
+          <td mat-footer-cell *matFooterCellDef> Total </td>
+          <td><span >{{item.quantity}}</span></td>
+          <td><span class="form-control" >{{item.price}}</span></td>
+          <td><span class="form-control" >{{item.total}}</span></td>
+          <td><mat-icon (click)="removeItem(i)" matTooltip="Delete">delete</mat-icon></td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  
     <!-- <mat-divider></mat-divider> -->
-  </form>
-
- 
-  <table class="table">
     
-    <thead *ngIf="items.length">
-      <tr>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total Price</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items; let i = index">
-        <td><span  class="form-control">{{item.name}}</span></td> 
-        <td mat-footer-cell *matFooterCellDef> Total </td>
-        <td><span >{{item.quantity}}</span></td>
-        <td><span class="form-control" >{{item.price}}</span></td>
-        <td><span class="form-control" >{{item.total}}</span></td>
-        <td><mat-icon (click)="removeItem(i)" matTooltip="Delete">delete</mat-icon></td>
-      </tr>
-    </tbody>
-  </table>
-
-
-
-  <!-- <mat-divider></mat-divider> -->
   
-
-  <form #getAllOrderForm="ngForm" (ngSubmit)="onFormSubmit(getAllOrderForm)" >
-
-    <mat-form-field>
-      <mat-label fxFlex="40">Payment Mode</mat-label>
-      <mat-select id="paymentMode" name="paymentMode" [(ngModel)]="newItem.paymentMode" required>
-        <mat-option value="Cash">Cash</mat-option>
-        <mat-option value="UPI">UPI</mat-option>
-        <mat-option value="Card">Card</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button type="submit" mat-raised-button class="cnclbtn">Order Confirmed</button>
-  </form>
-
+    <form #AllOrderForm="ngForm"  name="getAllOrderForm" [formGroup]="orderConfirm">
   
-</div>
-
-<!-- </mat-card> -->
-<!-- [(ngModel)]="paymentMode" -->
+      <mat-form-field>
+        <mat-label fxFlex="40">Payment Mode</mat-label>
+        <mat-select id="paymentMode" formControlName="paymentMode" name="paymentMode" [(ngModel)]="newItem.paymentMode" required>
+          <mat-option value="Cash">Cash</mat-option>
+          <mat-option value="UPI">UPI</mat-option>
+          <mat-option value="Card">Card</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="button" mat-raised-button class="cnclbtn" (click)="onFormSubmit(AllOrderForm)">Order Confirmed</button>
+    </form>
+  
+    
+  </div>
+  
+  <!-- </mat-card> -->
+  <!-- [(ngModel)]="paymentMode" -->

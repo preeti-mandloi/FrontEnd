@@ -10,7 +10,7 @@ import { AllProduct } from '../models/product';
 import { ProfileComponent } from '../profile/profile.component';
 import { LogoutComponent } from '../logout/logout.component';
 import * as moment from 'moment';
-import { GridOptions } from 'ag-grid-community';
+import { GridOptions, HeaderNavigationDirection } from 'ag-grid-community';
 // import { MatSidenav } from '@angular/material/sidenav';
 // import {BreakpointObserver} from '@angular/cdk/layout' ; 
 

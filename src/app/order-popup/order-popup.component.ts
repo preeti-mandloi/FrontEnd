@@ -19,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OrderPopupComponent implements OnInit {
   addProductInRow!: FormGroup;
+  orderConfirm!:FormGroup;
   items: Array<any> = [];
   newItem: any = { };
  frameworkComponents: any;
@@ -84,9 +85,15 @@ export class OrderPopupComponent implements OnInit {
        
        }
     );
+    this.orderConfirm= new FormGroup(
+      {
+        paymentMode :new FormControl('',[Validators.required]),
+      }
+    );
     // console.log(this.model);
   }
 
+  
   private _filter(value: string): any[] {
     if(value){
       const filterValue = value.toLowerCase();
@@ -95,8 +102,8 @@ export class OrderPopupComponent implements OnInit {
     return [];
   }
   
-  onFormSubmit(OrderformModel:NgForm) {
-    
+  onFormSubmit(OrderformModel: any) {
+    if(this.orderConfirm.valid){
     // console.log(OrderformModel.value.paymentMode);
     this.items.forEach(element => {
       element.paymentmode = OrderformModel.value.paymentMode;
@@ -109,7 +116,7 @@ export class OrderPopupComponent implements OnInit {
     //reset form
     this.items = [];
     OrderformModel.resetForm();
-  }
+  }}
  
   onClose(): void {
     this.dialogRef.close(false);

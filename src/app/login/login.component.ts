@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit {
      
   ngOnInit(){
    
+    if(localStorage.getItem("user-check")  ){
+      this.router.navigate(['/app-order-summary']);
+    }
     this.initForm();
 
   }

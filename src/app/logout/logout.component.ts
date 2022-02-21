@@ -22,9 +22,8 @@ export class LogoutComponent implements OnInit {
   close() :void {
     this.dialogRef.close(false);
   }
-  onLogout(){  
-    localStorage.setItem("isLoggedIn", "0");
-    localStorage.removeItem("user");
+  onLogout(){
+    localStorage.removeItem("user-check");
     this.route.navigateByUrl('/');  
     this.dialogRef.close(false);
    
