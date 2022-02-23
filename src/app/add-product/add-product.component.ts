@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
-// import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -20,10 +20,7 @@ export class AddProductComponent implements OnInit {
 
   addProduct!: FormGroup;
 
-  // myControl = new FormControl();
-  // options: string[] = ['Shirt', 'Jeans', 'Jacket','Joggers','Sendals','Shoes'];
-  // filteredOptions: Observable<string[]> | undefined;
-  date = new FormControl(new Date().toLocaleDateString());
+   date = new FormControl(new Date().toLocaleDateString());
   grid: any;
 
 
@@ -34,13 +31,12 @@ export class AddProductComponent implements OnInit {
     private service: ServiceService,
     private router: Router,
     private toastr: ToastrService
-    // private adminDashboard:AdminDashboardComponent,
+    
 
   ) { }
   ngOnInit(): void {
     this.initForm();
-    // throw new Error('Method not implemented.');
-  }
+   }
   model: Product = {
     status: '',
     name: '',
@@ -50,18 +46,7 @@ export class AddProductComponent implements OnInit {
     mfg: '',
     exp: '',
   }
-  // ngOnInit(): void {
-  //   this.filteredOptions = this.myControl.valueChanges.pipe(
-  //     startWith(''),
-  //     map(value => this._filter(value)),
-  //   );
-  // }
-
-  // private _filter(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
-
-  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  // }
+  
   initForm() {
     this.addProduct = new FormGroup(
       {
@@ -72,7 +57,6 @@ export class AddProductComponent implements OnInit {
         mfgDate: new FormControl('', [Validators.required]),
       }
     );
-    // console.log(this.model);
   }
   onFormSubmit(addProductInTable: any) {
 
@@ -80,24 +64,11 @@ export class AddProductComponent implements OnInit {
       this.model.mfg = moment(this.model.mfg).format('YYYY-MM-DD');
       this.service.addProduct(this.model).subscribe(
         (response: any) => {
-
-
-          // console.log("add product",this.model)
-
-          //   this.toastr.success('Product Added', 'Success');
-          // },
-          // (error: any) => {
-          //   this.toastr.error('Product not added', 'Error');
-          // }
-          // alert("success ");
           this.toastr.success("Product Added SuccessFully")
           addProductInTable.resetForm();
-          // this.gridApi.setRowData(this.model);
-          this.gridApi.refresh();
           this.dialogRef.close({data: 'success'});
         });
       } else { 
-      // alert("faild")
        this.toastr.error("Faild")
        }
 

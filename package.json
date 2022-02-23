@@ -24,6 +24,7 @@
     "@syncfusion/ej2-angular-grids": "^19.4.48",
     "ag-grid-angular": "^26.2.0",
     "ag-grid-community": "^26.2.1",
+    "ag-grid-enterprise": "^27.0.1",
     "highcharts": "^9.3.3",
     "highcharts-angular": "^3.0.0",
     "moment": "^2.29.1",

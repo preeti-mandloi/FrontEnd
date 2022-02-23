@@ -39,6 +39,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CardComponent } from './widgets/card/card.component';
 import { WelcomeadminComponent } from './widgets/welcomeadmin/welcomeadmin.component';
 import { PiechartComponent } from './widgets/piechart/piechart.component';
+
 @NgModule({
   declarations: [
     AppComponent,

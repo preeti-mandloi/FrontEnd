@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { RowGroupingDisplayType } from 'ag-grid-community';
 import { environment } from 'src/environments/environment.prod';
 import { LogoutComponent } from '../logout/logout.component';
 import { Order } from '../models/product';
@@ -29,6 +30,7 @@ export class OrderDetailsComponent implements OnInit {
   public defaultColDef: any;
   public paginationPageSize: any;
   public paginationNumberFormatter: any;
+  public groupDisplayType: RowGroupingDisplayType = 'groupRows';
   constructor(
     private http: HttpClient, private dialog:MatDialog,
   ) { 
@@ -70,9 +72,13 @@ export class OrderDetailsComponent implements OnInit {
         headerCheckboxSelection: false,
       },
      
-    ]
+    ];this.groupDisplayType = 'groupRows';
+  
   }
-
+  
+  public autoGroupColumnDef= {
+    minWidth: 200,
+  };
   ngOnInit(): void {
   }
   onGridReady(params: any){
