@@ -1,65 +1,55 @@
-mat-form-field{
-    margin-left: 15px;  
-    padding-bottom:20px;
-    
+mat-form-field {
+  margin-left: 15px;
+  padding-bottom: 20px;
 }
-// .fields{
-//     display: flex;
-// }
-button{
-  margin-right:auto;
+
+button {
+  margin-right: auto;
   float: right;
 }
-.addbtn{
-    float: right;
-    background: #002b5c;
-    color: white;
-    margin-left: 120px;
-    height: fit-content;
-   }
-   .cnclbtn{
-    // padding: 2.5px;  
-    // margin:10px;
-    // width: 10%;
-    background: #002b5c;
-    color: white;  
+.addbtn {
+  float: right;
+  background: #002b5c;
+  color: white;
+  margin-left: 120px;
+  height: fit-content;
+}
+.cnclbtn {
+  background: #002b5c;
+  color: white;
 }
 mat-divider {
-    margin-left: 8px;
-    margin-right: 8px;
-    // background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 8px;
+  margin-right: 8px;
 }
-.align{
-    text-align: center;
-    color: #002b5c;
-    padding: 2px;
+.align {
+  text-align: center;
+  color: #002b5c;
+  padding: 2px;
 }
-.invisible{
-    visibility: hidden;
-    height: 0;
-    width: 0;
-}   
-
-
+.invisible {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
 
 table {
   width: 100%;
   text-align: center;
 }
 th.mat-header-cell {
-    text-align: center;
+  text-align: center;
 }
-.w-75{
-    max-width: 50px;
-}
-
-.w-100{
-    max-width: 100px;
-}
-.confirmOrder{
- padding-top:20px;
-}
-mat-icon{
-    color:#002b5c ;
+.w-75 {
+  max-width: 50px;
 }
 
+.w-100 {
+  max-width: 100px;
+}
+.confirmOrder {
+  padding-top: 20px;
+}
+mat-icon {
+  color: #002b5c;
+}

@@ -1,140 +1,137 @@
 mat-toolbar {
-    background:#002b5c ;
-    color: white;
+  background: #002b5c;
+  color: white;
 }
 .avatar {
-    
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
-.adjust{
-    padding-left: 990px;
-    margin-bottom: 10px;   
+.adjust {
+  padding-left: 990px;
+  margin-bottom: 10px;
 }
 mat-sidenav {
-    margin: 16px;
-    width: 200px;
-    height: 150px;
-    // border-right: none;
-    background: #002b5c;
-    color: white;
-    border-radius: 10px;
-     padding: 16px;
-    text-align: center;
+  margin: 16px;
+  width: 200px;
+  height: 150px;
+  // border-right: none;
+  background: #002b5c;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
 }
-:host ::ng-deep .mat-drawer-inner-container{
-    overflow: hidden !important;
+:host ::ng-deep .mat-drawer-inner-container {
+  overflow: hidden !important;
 }
 .content {
-    height: calc(100vh - 98px);
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 32px;
-    //  display: flex;
-    //  justify-content: center;
-    font-size: 2rem;
-    color: black;
-  
+  height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  //  display: flex;
+  //  justify-content: center;
+  font-size: 2rem;
+  color: black;
 }
-
 
 mat-sidenav-container {
-    height: calc(100vh - 65px);
+  height: calc(100vh - 65px);
 }
 .menu-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
 
-    mat-icon {
-        margin-right: 8px;
-    }
+  mat-icon {
+    margin-right: 8px;
+  }
 }
 
 .name {
-    margin-top: 8px;
-    font-weight: normal;
+  margin-top: 8px;
+  font-weight: normal;
 }
 
 .designation {
-    margin-top: 2px;
-    font-size: 0.7rem;
-    color: lightgrey;
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
 }
 mat-divider {
-    margin-left: 15px;
-    margin-right: 15px;
-    background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 a {
-    text-decoration: none;
-    color:white;
+  text-decoration: none;
+  color: white;
 }
-.header{
+.header {
+  color: #002b5c;
+  text-align: center;
+  margin-bottom: auto;
+  padding-top: 10px;
+}
+.heading {
+  color: black;
+  text-align: left;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 15px;
+}
+p {
+  color: #808080;
+  font-size: 13px;
+  padding-left: 15px;
+}
+.profileIcon {
+  mat-icon {
     color: #002b5c;
-    text-align: center;
-    margin-bottom:auto;
-    padding-top: 10px ;
+  }
 }
-.heading{
-    color: black;
-    text-align: left;
-    margin-right: auto;
-    padding-top: 10px;
-    padding-left: 15px;
-    font-size: 15px;
+.mat-menu-item .mat-icon-no-color,
+.mat-menu-submenu-icon {
+  color: #002b5c;
 }
-p{
-    color:  #808080;
-    font-size: 13px;
-    padding-left: 15px;
-}
-.profileIcon{
-    mat-icon{
-        color: #002b5c;
-    }
-}
-.mat-menu-item .mat-icon-no-color, .mat-menu-submenu-icon {
-    color: #002b5c;
-}
-
 
 /*card.component.css*/
 .more-button {
-    position: absolute;
-    top: 5px;
-    right: 10px;
- }
- 
- .dashboard-card {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
- }
- mat-card{
-     margin-top: 10px;
-     margin-left: 10px;
-     margin-right: 10px;
- }
- 
- .dashboard-card-content {
-    text-align: center;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-height: 100%;
-    justify-content: center;
-    align-items: stretch;
- }
- 
- mat-card {
-    display: flex;
-    flex-direction: column;
- }
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+mat-card {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  justify-content: center;
+  align-items: stretch;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+}

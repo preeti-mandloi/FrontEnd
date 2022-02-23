@@ -1,75 +1,62 @@
 mat-toolbar {
-    background: #002b5c;
-    color: white;
-    text-align:right;
+  background: #002b5c;
+  color: white;
+  text-align: right;
 }
-h2{
-    color: white;
+h2 {
+  color: white;
 }
-.loginBtn{
-    background-color:#002b5c;
-    color: white;
+.loginBtn {
+  background-color: #002b5c;
+  color: white;
 }
-.mat-card{
-    max-width: 500px;
-    // margin: 5em auto;
-    text-align: center;
-    max-height: 600px;
-    float: right;
-    height: 280px;
-    width: 450px;
-    margin-top: 100px;
-    margin-right: 370px;
-    border-right:2px solid #215a9c;
-    border-bottom:2px solid #215a9c;
-    // border-left:2px solid #002b5c;
-    // border-top:2px solid #002b5c;
-  
-  }
-  mat-card-content{
-    background-color: #002b5c;
-    height: 48px;
-    text-align: center;
-    padding-top: 12px;
-  }
+.mat-card {
+  max-width: 500px;
+  text-align: center;
+  max-height: 600px;
+  float: right;
+  height: 280px;
+  width: 450px;
+  margin-top: 100px;
+  margin-right: 370px;
+  border-right: 2px solid #215a9c;
+  border-bottom: 2px solid #215a9c;
+}
+mat-card-content {
+  background-color: #002b5c;
+  height: 48px;
+  text-align: center;
+  padding-top: 12px;
+}
 
-//   button{
-//       color: #002b5c;
-//   }
-  .full-width{
-    width: 80%;
-  }
-  .forget-password{
-    padding-left: 0px;
-  }
-  .email-input{
-    padding-top: 10px;
-  }
-  .aLink{
-    float: right;
-    padding-right: 60px;
-    text-decoration: none;
-  }
-  .mat-icon{
-    color: #002b5c;
-    font-size: 20px;
-    
-  }
-  .box{
-    padding: 50px;
+.full-width {
+  width: 80%;
+}
+.forget-password {
+  padding-left: 0px;
+}
+.email-input {
+  padding-top: 10px;
+}
+.aLink {
+  float: right;
+  padding-right: 60px;
+  text-decoration: none;
+}
+.mat-icon {
+  color: #002b5c;
+  font-size: 20px;
+}
+.box {
+  padding: 50px;
+}
 
-  }
-  
-  #sect1 {  
-    background-image: url("../../assets/login1.jpg");  
+#sect1 {
+  background-image: url("../../assets/login1.jpg");
 
-    background-size:100% ;  
-    background-position:100%;
-    width: 100%;
-    object-fit: contain;
-    height: 92%;
-  }    
-  // img{
-  //   width:760px;;
-  //   height:550px;
-  // }
+  background-size: 100%;
+  background-position: 100%;
+  width: 100%;
+  object-fit: contain;
+  height: 92%;
+}

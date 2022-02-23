@@ -5,28 +5,25 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+  styleUrls: ['./logout.component.scss'],
 })
 export class LogoutComponent implements OnInit {
-  // dialogRef: any;
   authService: any;
 
+  constructor(
+    private router: Router,
+    private route: Router,
+    private dialogRef: MatDialogRef<LogoutComponent>
+  ) {}
 
-  constructor(private router:Router,
-    private route:Router,
-    private dialogRef: MatDialogRef<LogoutComponent>) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-  
-  close() :void {
+  close(): void {
     this.dialogRef.close(false);
   }
-  onLogout(){
-    localStorage.removeItem("user-check");
-    this.route.navigateByUrl('/');  
+  onLogout() {
+    localStorage.removeItem('user-check');
+    this.route.navigateByUrl('/');
     this.dialogRef.close(false);
-   
-  }  
-  
+  }
 }

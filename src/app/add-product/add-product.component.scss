@@ -1,40 +1,33 @@
-
-mat-form-field{
-    margin-left: 20px;
-    margin-right: 10px;
+mat-form-field {
+  margin-left: 20px;
+  margin-right: 10px;
 }
-button{
-    margin-left: 160px;
-    margin-top: 10px;
+button {
+  margin-left: 160px;
+  margin-top: 10px;
   height: fit-content;
   background: #002b5c;
   color: white;
 }
-.addbtn{
-    padding: 2.5px ;
-    width: 10%;
-  
-   
-   }
-   .cnclbtn{
-    padding: 2.5px;  
-    // margin:10px;
-    margin-left: 10px;
-    width: 10%;
-    // background: #002b5c;
-    // color: white;
-       
+.addbtn {
+  padding: 2.5px;
+  width: 10%;
+}
+.cnclbtn {
+  padding: 2.5px;
+  margin-left: 10px;
+  width: 10%;
 }
 
-.align{
-    text-align: center;
-    color: #002b5c;
-    padding: 2px;
+.align {
+  text-align: center;
+  color: #002b5c;
+  padding: 2px;
 }
-.matPicker{
-    width: 380px;
+.matPicker {
+  width: 380px;
 }
 .mat-datepicker-content .mat-calendar {
-    width: 200px;
-    height: 100px;
+  width: 200px;
+  height: 100px;
 }

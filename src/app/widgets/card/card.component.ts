@@ -5,7 +5,7 @@ import * as HC_exporting from 'highcharts/modules/exporting';
 @Component({
   selector: 'app-widget-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
   @Input()
@@ -15,62 +15,64 @@ export class CardComponent implements OnInit {
   @Input()
   percentage!: string;
   chartOptions!: {};
-  Highcharts=Highcharts;
-  constructor() { }
+  Highcharts = Highcharts;
+  constructor() {}
 
   ngOnInit(): void {
-    this.chartOptions={
+    this.chartOptions = {
       chart: {
-          type: 'area',
-          backgroundColor:null,
-          borderWidth:0,
-          margin:[2,2],
-          height:50,
+        type: 'area',
+        backgroundColor: null,
+        borderWidth: 0,
+        margin: [2, 2],
+        height: 50,
       },
       title: {
-          text: null
+        text: null,
       },
       subtitle: {
-          text:null
+        text: null,
       },
       tooltip: {
-          split: true,
-          outside:true
+        split: true,
+        outside: true,
       },
-      legend:{
-        enabled:false,
+      legend: {
+        enabled: false,
       },
-      credits:{
-        enabled:false,
+      credits: {
+        enabled: false,
       },
-      exporting:{
-        enabled:false,
+      exporting: {
+        enabled: false,
       },
-      xAxis:{
-        labels:{
-          enabled:false
+      xAxis: {
+        labels: {
+          enabled: false,
         },
-        title:{
-          text:null
+        title: {
+          text: null,
         },
-        startOnTick:false,
-        endOnTick:false,tickOption:[]
+        startOnTick: false,
+        endOnTick: false,
+        tickOption: [],
       },
-      yAxis:{
-        labels:{
-          enabled:false
+      yAxis: {
+        labels: {
+          enabled: false,
         },
-        title:{
-          text:null
+        title: {
+          text: null,
         },
-        startOnTick:false,
-        endOnTick:false,tickOption:[]
+        startOnTick: false,
+        endOnTick: false,
+        tickOption: [],
       },
-      series: [{
-          
-          data: [20, 10,40,60,70]
-      }]
-  };
+      series: [
+        {
+          data: [20, 10, 40, 60, 70],
+        },
+      ],
+    };
   }
-
 }

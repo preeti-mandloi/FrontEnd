@@ -1,99 +1,82 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  Order Management
+  <div class="adjust">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <img
+        class="avatar mat-elevation-z8"
+        src="https://i.pinimg.com/736x/d4/cd/5a/d4cd5a64fb72059083de14e947fb8f82.jpg"
+      />
     </button>
-     Order Management
-    <!-- <div class="subModule">PRODUCT LIST</div> -->
-    <div class="adjust">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <img class="avatar mat-elevation-z8" src="https://i.pinimg.com/736x/d4/cd/5a/d4cd5a64fb72059083de14e947fb8f82.jpg" />
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item class="profileIcon" (click)="profile()">
-              <mat-icon>account_circle</mat-icon>
-              <span>Profile</span>
-            </button>
-            <button mat-menu-item (click)="logout()">
-              <mat-icon>logout</mat-icon>
-              <span>Logout</span>
-            </button>
-        </mat-menu>
-    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="profileIcon" (click)="profile()">
+        <mat-icon>account_circle</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav">
-      
-  <!-- <h4 class="name">Dashboard</h4> -->
-  <!-- <p class="designation">Software Engineer</p> -->
- 
-  <a routerLink= "/app-order-summary" ><button mat-button class="menu-button">
+  <mat-sidenav #sidenav="matSidenav">
+    <a routerLink="/app-order-summary"
+      ><button mat-button class="menu-button">
         <mat-icon>home</mat-icon>
         <span>Dashboard</span>
-    </button></a>
-    <!-- <a href='app-add-product'><button mat-button class="menu-button">
-        <mat-icon>add</mat-icon>
-        <span>ADD Product</span>
-    </button>
-    </a> -->
-    <a routerLink="/app-admin-dashboard"><button mat-button class="menu-button">
-      <mat-icon>note</mat-icon>
-      <span>Product List</span>
-     </button>
+      </button></a
+    >
+    <a routerLink="/app-admin-dashboard"
+      ><button mat-button class="menu-button">
+        <mat-icon>note</mat-icon>
+        <span>Product List</span>
+      </button>
     </a>
-    <a routerLink="/app-order-details"><button mat-button class="menu-button">
+    <a routerLink="/app-order-details"
+      ><button mat-button class="menu-button">
         <mat-icon>list</mat-icon>
         <span>Order List</span>
-    </button>
+      </button>
     </a>
-   
-  <!-- <button mat-button class="menu-button">
-    <mat-icon>payment</mat-icon>
-    <span>Payment</span>
-  </button> -->
-  
-  
-    
-    </mat-sidenav>
-   
-    <mat-sidenav-content>
-      
-          <!-- <div class="addPro">
-            <mat-icon matTooltip="Add-Product">add</mat-icon></a>
-        </div> -->
-        <div class="addPro">
-          
-            <button mat-mini-fab class="addOrd" (click)="addOrder()">
-            <mat-icon matTooltip="Add-Order">shopping_cart</mat-icon>
-            </button>
-      
-          
-          <button mat-mini-fab (click)="addProduct()">
-            <mat-icon matTooltip="Add-Product">add</mat-icon>
-          </button>
-        </div>
-        <div class="">
-            <ag-grid-angular  
-               class="ag-theme-alpine" 
-               [columnDefs]="columnDefs"
-                (gridReady)="onGridReady($event)" 
-                [defaultColDef]="defaultColDef" 
-                [debounceVerticalScrollbar]="true"
-                [enableRangeSelection]="true"
-                [pagination]="true"
-                [paginationPageSize]="paginationPageSize"
-                [paginationNumberFormatter]="paginationNumberFormatter"
-                [domLayout]='"autoHeight"'
-                [frameworkComponents]="frameworkComponents"
-             ></ag-grid-angular>
-        </div>
-           
-       
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  <!-- [groupIncludeFooter]="true"
-  [groupIncludeTotalFooter]="true" -->
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="addPro">
+      <button mat-mini-fab class="addOrd" (click)="addOrder()">
+        <mat-icon matTooltip="Add-Order">shopping_cart</mat-icon>
+      </button>
+
+      <button mat-mini-fab (click)="addProduct()">
+        <mat-icon matTooltip="Add-Product">add</mat-icon>
+      </button>
+    </div>
+    <div class="">
+      <ag-grid-angular
+        class="ag-theme-alpine"
+        [columnDefs]="columnDefs"
+        (gridReady)="onGridReady($event)"
+        [defaultColDef]="defaultColDef"
+        [debounceVerticalScrollbar]="true"
+        [enableRangeSelection]="true"
+        [pagination]="true"
+        [paginationPageSize]="paginationPageSize"
+        [paginationNumberFormatter]="paginationNumberFormatter"
+        [domLayout]="'autoHeight'"
+        [frameworkComponents]="frameworkComponents"
+      ></ag-grid-angular>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
