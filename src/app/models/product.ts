@@ -19,7 +19,7 @@ export interface AllProduct {
 export interface Order {
   name: string;
   quantity: number;
-  ord_id: string;
+  ordId: string;
   paymentmode: string;
 }
 

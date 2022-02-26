@@ -15,7 +15,7 @@ import { ProfileComponent } from '../profile/profile.component';
 export class OrderDetailsComponent implements OnInit {
   frameworkComponents: any;
   model: Order = {
-    ord_id: '',
+    ordId: '',
     name: '',
     quantity: 0,
     paymentmode: '',
@@ -40,7 +40,7 @@ export class OrderDetailsComponent implements OnInit {
     this.columnDefs = [
       {
         headerName: 'Order ID',
-        field: 'ord_id',
+        field: 'ordId',
         width: 315,
         sortable: true,
         sortingOrder: ['asc', 'desc', 'null'],
