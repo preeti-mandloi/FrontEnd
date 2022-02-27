@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     private auth: AuthenticationService
   ) {}
   loginForm!: FormGroup;
-  hide: any;
+  hide: boolean = true;
   username: any;
   model: Login = {
     username: '',

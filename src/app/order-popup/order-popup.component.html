@@ -21,7 +21,7 @@
           name="name"
           [(ngModel)]="newItem.name"
           formControlName="name"
-        />
+        /><mat-error>Name is required</mat-error>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option
             *ngFor="let option of filteredOptions | async"
@@ -30,6 +30,7 @@
             {{ option }}
           </mat-option>
         </mat-autocomplete>
+        
       </mat-form-field>
       <mat-form-field color="#002b5c" fxFlex="40">
         <input
@@ -38,10 +39,12 @@
           [(ngModel)]="newItem.quantity"
           required
           name="quantity"
+          min="1"
           matInput
           type="number"
           placeholder="Quantity"
         />
+        <mat-error>Quantity is required</mat-error>
       </mat-form-field>
 
       <button
@@ -50,7 +53,7 @@
         class="addbtn"
         (click)="addItems(addOrderForm)"
       >
-        Add
+      Add
       </button>
     </div>
   </form>

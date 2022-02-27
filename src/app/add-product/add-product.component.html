@@ -1,4 +1,4 @@
-<mat-card>
+
   <div class="align">
     <h2><b>Add Product</b></h2>
   </div>
@@ -66,6 +66,7 @@
             id="price"
             matInput
             type="number"
+            min="1"
             placeholder="Price"
             [(ngModel)]="model.price"
             required="price is required"
@@ -118,4 +119,4 @@
       </button>
     </form>
   </div>
-</mat-card>
+
